@@ -10,7 +10,19 @@ class ScheduleApp extends Component {
 }
 
 function mapStateToProps(state) {
-  return state || {};
+  const {
+    activities,
+    days,
+    resources,
+    resourceActivityDays,
+  } = state
+
+  return {
+    activities,
+    days,
+    resources,
+    resourceActivityDays,
+  }
 }
 
 function mapDispatchToProps(dispatch) {
