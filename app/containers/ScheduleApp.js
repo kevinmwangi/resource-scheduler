@@ -1,10 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import AppBar from 'material-ui/AppBar'
+
+import Schedule from '../components/Schedule'
+
+const styles = {
+  ScheduleApp: {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  AppBar: {
+    flex: 'none',
+  },
+}
+
 class ScheduleApp extends Component {
   render () {
     return (
-      <div>Hi There</div>
+      <div className="ScheduleApp" style={styles.ScheduleApp}>
+        <AppBar
+          title="Resource Scheduler"
+          style={styles.AppBar}
+        />
+
+      </div>
     )
   }
 }
