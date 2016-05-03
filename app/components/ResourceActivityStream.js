@@ -10,7 +10,8 @@ const styles = {
   ResourceActivityStream: {
     whiteSpace: 'nowrap',
     display: 'inline-block',
-    height: dimensions.STREAM_CONTAINER_HEIGHT,
+    paddingTop: dimensions.STREAM_MARGIN,
+    paddingBottom: dimensions.STREAM_MARGIN,
   },
 }
 
