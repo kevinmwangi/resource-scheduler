@@ -22,10 +22,14 @@ class ScheduleApp extends Component {
     return (
       <div className="ScheduleApp" style={styles.ScheduleApp}>
         <AppBar
+          zDepth={2}
           title="Resource Scheduler"
           style={styles.AppBar}
         />
 
+        <Schedule
+          {...this.props}
+        />
       </div>
     )
   }
