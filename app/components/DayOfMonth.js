@@ -24,6 +24,9 @@ const styles = {
   weekend: {
     backgroundColor: colors.WEEKEND,
   },
+  today: {
+    backgroundColor: colors.TODAY,
+  }
 }
 
 export default function DayOfMonth({day}) {
@@ -31,8 +34,12 @@ export default function DayOfMonth({day}) {
   const dayOfMonth = momentDay.date()
   const dayOfWeek = momentDay.day()
   const isWeekend = (dayOfWeek == 0) || (dayOfWeek == 6)
+  const isToday = momentDay.isSame(moment(), 'day')
 
-  const dayStyle = isWeekend ? styles.weekend : styles.weekday
+  const dayStyle = isToday ?
+                    styles.today :
+                    (isWeekend ? styles.weekend : styles.weekday)
+
   const style = Object.assign(styles.DayOfMonth, dayStyle)
 
   return (
