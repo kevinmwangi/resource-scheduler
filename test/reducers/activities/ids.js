@@ -7,7 +7,7 @@ describe('reducer: activities.ids', function() {
     it('is an empty array', function() {
       const state = undefined
       const action = {}
-      expect(ids(state, {})).toEqual([])
+      expect(ids(state, action)).toEqual([])
     })
   })
 

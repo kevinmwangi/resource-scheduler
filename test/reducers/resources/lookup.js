@@ -7,7 +7,7 @@ describe('reducer: resources.lookup', function() {
     it('is an empty array', function() {
       const state = undefined
       const action = {}
-      expect(lookup(state, {})).toEqual({})
+      expect(lookup(state, action)).toEqual({})
     })
   })
 
