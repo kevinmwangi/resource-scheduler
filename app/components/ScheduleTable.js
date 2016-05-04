@@ -39,7 +39,7 @@ const styles = {
   },
   timeStream: {
     overflowY: 'hidden',
-    overflowX: 'scroll',
+    overflowX: 'hidden',
     zIndex: 2,
     display: 'flex',
   },
@@ -84,11 +84,6 @@ export default class ScheduleTable extends Component {
     document.getElementById('TimeStreamInnerWindow').scrollLeft = scrollLeft
   }
 
-  onScrollTimeStream(event) {
-    const scrollLeft = event.target.scrollLeft
-    document.getElementById('StreamsContainer').scrollLeft = scrollLeft
-  }
-
   render () {
     return (
       <div className='ScheduleTable' style={styles.ScheduleTable}>
@@ -107,7 +102,7 @@ export default class ScheduleTable extends Component {
               zDepth={2}
               rounded={false}
               style={styles.timeStream}
-              onScroll={this.onScrollTimeStream.bind(this)} >
+            >
 
                 <TimeStream days={this.props.days} />
 
