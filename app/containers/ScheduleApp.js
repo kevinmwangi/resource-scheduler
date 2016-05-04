@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import AppBar from 'material-ui/AppBar'
 
+import * as actionCreators from '../actionCreators'
 import Schedule from '../components/Schedule'
 
 const styles = {
@@ -52,9 +54,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    something: () => dispatch()
-  }
+  return bindActionCreators(actionCreators, dispatch)
 }
 
 export default connect(
