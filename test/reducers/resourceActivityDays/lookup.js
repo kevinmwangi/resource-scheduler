@@ -1,4 +1,4 @@
-import actionTypes from '../../../app/constants/actionTypes'
+import actionType from '../../../app/constants/actionTypes'
 
 import lookup from '../../../app/reducers/resources/lookup'
 
@@ -19,11 +19,11 @@ describe('reducer: resources.lookup', function() {
     })
   })
 
-  // describe(ACTION_NAME, function() {
+  // describe(actionType.ACTION_NAME, function() {
   //   it('removes the id', function() {
   //     const state = ?
   //     const action = {
-  //       type: ACTION_NAME,
+  //       type: actionType.ACTION_NAME
   //       ?
   //     }
   //     expect(lookup(state, action)).toEqual(?)
