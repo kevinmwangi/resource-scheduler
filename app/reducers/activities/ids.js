@@ -1,4 +1,4 @@
-import type from '../../constants/actionTypes'
+import actionType from '../../constants/actionTypes'
 
 const initialState = []
 
