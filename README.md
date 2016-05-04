@@ -7,7 +7,7 @@ Currently the application is using randomly generated dummy data.
 ## Tests
 
 run `npm test` to run tests onces
-run `npm test:watch` to automatically run test upon code changes
+run `npm run test:watch` to automatically run test upon code changes
 
 ## Development server
 
