@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 const activities = {
-  list: [1,2,3,4],
+  ids: [1,2,3,4],
   lookup: {
     1: {id: 2, name: 'Project 1'},
     2: {id: 3, name: 'Project 2'},
@@ -11,7 +11,7 @@ const activities = {
 }
 
 const resources = {
-  list: [1,2,3,4,5],
+  ids: [1,2,3,4,5],
   lookup: {
     1: {id: 1, name: 'neil'},
     2: {id: 2, name: 'room1'},
@@ -27,12 +27,12 @@ const halfPeriod = moment.duration(periodLength / 2, 'days')
 const periodStart = today.subtract(halfPeriod)
 
 function generateDays(periodStart, periodLength) {
-  let list = []
+  let ids = []
 
   for(let i = 0; i < periodLength; i++) {
-    list.push(periodStart.add(1, 'day').format('YYYY-MM-DD'))
+    ids.push(periodStart.add(1, 'day').format('YYYY-MM-DD'))
   }
-  return list
+  return ids
 }
 
 const days = generateDays(periodStart, periodLength)
@@ -54,12 +54,12 @@ function generateSingleResourceActivityDay (resource_id, activity_id, idCounter,
 }
 
 function generateResourceActivityDays () {
-  let list = []
+  let ids = []
   let lookup = {}
   let idCounter = 0
 
-  resources.list.forEach((resource_id) => {
-    activities.list.forEach((activity_id) => {
+  resources.ids.forEach((resource_id) => {
+    activities.ids.forEach((activity_id) => {
       const streamToBeScheduled = Math.random() > 0.5
 
       if (streamToBeScheduled) {
@@ -74,7 +74,7 @@ function generateResourceActivityDays () {
               resource_id, activity_id, idCounter, day
             )
 
-            list.push(scheduledDay.uid)
+            ids.push(scheduledDay.uid)
             lookup[scheduledDay.uid] = scheduledDay
           }
         })
@@ -83,7 +83,7 @@ function generateResourceActivityDays () {
   })
 
   return {
-    list,
+    ids,
     lookup,
   }
 }

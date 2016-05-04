@@ -9,8 +9,8 @@ export default ({
 
   let streamList = []
 
-  resources.list.forEach((resource_id) => {
-    activities.list.forEach((activity_id) => {
+  resources.ids.forEach((resource_id) => {
+    activities.ids.forEach((activity_id) => {
       const resourceActivityStream = stream({
         resource_id,
         activity_id,

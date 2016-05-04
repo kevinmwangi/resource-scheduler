@@ -1,6 +1,6 @@
-import type from '../constants/actionTypes'
+import type from '../../constants/actionTypes'
 
-const initialState = {list: [], lookup: {}}
+const initialState = []
 
 export default function (state = initialState, action) {
 

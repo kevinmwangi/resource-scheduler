@@ -35,7 +35,7 @@ export default function ResourceActivityStreamsContainer(props) {
     const groupedStreams = underscore.groupBy(streams, 'activity_id')
     const list = []
 
-    activities.list.forEach((activity_id) => {
+    activities.ids.forEach((activity_id) => {
       const activity = activities.lookup[activity_id]
       const streams = groupedStreams[activity_id] || []
 
@@ -60,7 +60,7 @@ export default function ResourceActivityStreamsContainer(props) {
     const groupedStreams = underscore.groupBy(streams, 'resource_id')
     const list = []
 
-    resources.list.forEach((resource_id) => {
+    resources.ids.forEach((resource_id) => {
       const resource = resources.lookup[resource_id]
       const streams = groupedStreams[resource_id] || []
 
