@@ -47,13 +47,12 @@ export default class ResourceActivityStream extends Component {
     })
 
     const activationStyle = isActive ? styles.active : styles.inactive
-    const zDepth = isActive ? 2 : 1
 
     return (
       <div
         className='ResourceActivityStream'
         style={Object.assign({}, styles.channel, activationStyle)}>
-        <Paper zDepth={zDepth} rounded={false} style={styles.stream}>
+        <Paper zDepth={2} rounded={false} style={styles.stream}>
           {days}
         </Paper>
       </div>
