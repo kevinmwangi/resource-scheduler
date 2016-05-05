@@ -1,29 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
+
+import FormResource from './FormResource'
 
 const styles = {}
 
 export default function EditorResource(props) {
   const {
-    open,
-    onClose,
+    isOpen,
+    onCancel,
+    onSubmit,
   } = props
+
+  const formId = 'formResource'
 
   const actions = [
     <FlatButton
       label="Cancel"
       secondary={true}
-      onTouchTap={onClose}
+      type='button'
+      onTouchTap={onCancel}
     />,
     <FlatButton
       label="Submit"
       primary={true}
       disabled={false}
-      onTouchTap={onClose}
-    />,
+      type='submit'
+      form={formId}
+    />
   ]
 
   return (
@@ -32,15 +37,19 @@ export default function EditorResource(props) {
         title="New Resource"
         actions={actions}
         modal={true}
-        open={open}
+        open={isOpen}
       >
-        <TextField
-          hintText="Name"
-          floatingLabelText="Name"
-          fullWidth={true}
+        <FormResource
+          formId={formId}
+          onSubmit={onSubmit}
         />
-
       </Dialog>
     </div>
   )
+}
+
+EditorResource.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 }

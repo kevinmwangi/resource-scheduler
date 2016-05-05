@@ -1,5 +1,11 @@
 import moment from 'moment'
 
+const editing = {
+  resource: false,
+  activity: false,
+  stream: false,
+}
+
 const activities = {
   ids: [1,2,3,4],
   lookup: {
@@ -93,4 +99,5 @@ export default {
   activities,
   days,
   resourceActivityDays: generateResourceActivityDays(),
+  editing,
 }

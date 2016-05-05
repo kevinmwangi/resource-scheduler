@@ -3,13 +3,10 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
 import ScheduleTable from '../components/ScheduleTable'
-
 import EditorStream from '../components/EditorStream'
 import EditorResource from '../components/EditorResource'
 import EditorActivity from '../components/EditorActivity'
-
 import NewButton from '../components/NewButton'
-import streamsSelector from '../selectors/streamsSelector'
 
 const styles = {
   Schedule: {
@@ -20,55 +17,51 @@ const styles = {
   },
 }
 
-export default class Schedule extends Component {
+export default function Schedule (props) {
+  const {
+    newResource, cancelNewResource, createResource,
+    newActivity, cancelNewActivity, createActivity,
+    newStream, cancelNewStream, createStream,
+    editing,
+    streams,
+    resources,
+    activities,
+  } = props
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      editingResource: false,
-      editingActivity: false,
-      editingStream: false,
-      streams: streamsSelector(props)
-    }
-  }
+  return (
+    <div className="Schedule" style={styles.Schedule}>
 
-  openEditResource = () => { this.setState({editingResource: true}) };
-  openEditActivity = () => { this.setState({editingActivity: true}) };
-  openEditStream = () => { this.setState({editingStream: true}) };
+      <EditorResource
+        isOpen={editing.resource}
+        onCancel={cancelNewResource}
+        onSubmit={createResource}
+      />
 
-  closeEditResource = () => { this.setState({editingResource: false}) };
-  closeEditActivity = () => { this.setState({editingActivity: false}) };
-  closeEditStream = () => { this.setState({editingStream: false}) };
+      <EditorActivity
+        isOpen={editing.activity}
+        onCancel={cancelNewActivity}
+        onSubmit={createActivity}
+      />
 
-  render(){
-    return (
-      <div className="Schedule" style={styles.Schedule}>
+      <EditorStream
+        isOpen={editing.stream}
+        onCancel={cancelNewStream}
+        onSubmit={createStream}
+        resources={resources}
+        activities={activities}
+      />
 
-        <EditorResource open={this.state.editingResource}
-          onClose={this.closeEditResource}
-        />
+      <ScheduleTable
+        {...props}
+        style={styles.ScheduleTable}
+      />
 
-        <EditorActivity open={this.state.editingActivity}
-          onClose={this.closeEditActivity}
-        />
+      <NewButton
+        onNewStream={newStream}
+        onNewResource={newResource}
+        onNewActivity={newActivity}
+      />
 
-        <EditorStream open={this.state.editingStream}
-          onClose={this.closeEditStream}
-        />
-
-        <ScheduleTable
-          {...this.props}
-          streams={this.state.streams}
-          style={styles.ScheduleTable}
-        />
-
-        <NewButton
-          onNewStream={this.openEditStream}
-          onNewResource={this.openEditResource}
-          onNewActivity={this.openEditActivity}
-        />
-
-      </div>
-    )
-  }
+    </div>
+  )
 }
