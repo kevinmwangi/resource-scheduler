@@ -54,9 +54,9 @@ export default function ResourceActivityDay(props) {
     hours,
   } = props
 
-  const backgroundStyles = scheduled ? styles.scheduled : styles.unscheduled
-
   const hrsKnown = typeof hours == 'number'
+
+  const backgroundStyles = (scheduled && !hrsKnown) ? styles.scheduled : styles.unscheduled
 
   const barHeight = (scheduled && hrsKnown) ? hours*dimensions.HOUR_HEIGHT : 0
   const barStyles = Object.assign({}, styles.bar, {height: barHeight})
@@ -67,7 +67,7 @@ export default function ResourceActivityDay(props) {
       style={Object.assign(styles.ResourceActivityDay, backgroundStyles)}>
       <div style={styles.textContainer}>
         <div style={styles.text}>
-          {(scheduled ) ? (hrsKnown ? hours : '?'): null}
+          {scheduled && hrsKnown ? hours : ''}
         </div>
       </div>
       <div style={barStyles}/>
