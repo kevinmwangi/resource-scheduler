@@ -10,7 +10,7 @@ const styles = {
     whiteSpace: 'nowrap',
     display: 'flex',
     flexDirection: 'column',
-    background: colors.BORDER,
+    background: colors.canvasColor,
     zIndex: 10,
   },
 }

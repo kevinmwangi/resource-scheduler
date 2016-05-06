@@ -39,7 +39,7 @@ export default function NewButton (props) {
   return (
     <IconMenu
       iconButtonElement={
-        <FloatingActionButton zDepth={4} primary={true}>
+        <FloatingActionButton zDepth={4} primary={true} secondary={true}>
           <ContentAdd />
         </FloatingActionButton>
       }

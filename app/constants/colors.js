@@ -1,20 +1,16 @@
-import {grey50} from 'material-ui/styles/colors'
-import {grey100} from 'material-ui/styles/colors'
-import {grey200} from 'material-ui/styles/colors'
-import {grey300} from 'material-ui/styles/colors'
-import {grey400} from 'material-ui/styles/colors'
+import {
+  cyan400,
+  darkBlack,
+  pink200,
+} from 'material-ui/styles/colors'
 
-import {pink100, pink300} from 'material-ui/styles/colors'
+import { fade } from 'material-ui/utils/colorManipulator'
 
-import {cyan500} from 'material-ui/styles/colors'
+import { palette } from '../themes/customLightTheme'
 
-
-export default {
-  BORDER: 'white',
-  BACKGROUND: grey200,
-  SCHEDULED_CELL: pink100,
-  HOURS_BAR: pink300,
-  WEEKEND: '#CACACA',
-  WEEKDAY: grey200,
-  TODAY: cyan500,
-}
+export default Object.assign({
+  scheduledColor: fade(cyan400, 0.4),
+  barColor: fade(cyan400, 0.9),
+  streamDisabledColor: fade(darkBlack, 0.2),
+  streamColor: fade(darkBlack, 0.06),
+}, palette)

@@ -6,13 +6,17 @@ import StreamLabel from './StreamLabel'
 import {ListItem} from 'material-ui/List'
 import dimensions from '../constants/dimensions'
 
+import colors from '../constants/colors'
+
 const styles = {
-  ResourceActivityStream: {
+  channel: {
     whiteSpace: 'nowrap',
     display: 'inline-block',
-    paddingTop: dimensions.STREAM_MARGIN,
-    paddingBottom: dimensions.STREAM_MARGIN,
   },
+  stream: {
+    marginTop: dimensions.STREAM_SPACING,
+    marginBottom: dimensions.STREAM_SPACING,
+  }
 }
 
 export default class ResourceActivityStream extends Component {
@@ -26,7 +30,8 @@ export default class ResourceActivityStream extends Component {
         <ResourceActivityDay
           key={day.day}
           hours={day.hours}
-          scheduled={day.scheduled} />
+          scheduled={day.scheduled}
+        />
       )
     })
 
@@ -34,8 +39,8 @@ export default class ResourceActivityStream extends Component {
       <div
         className='ResourceActivityStream'
         disabled={true}
-        style={styles.ResourceActivityStream}>
-        <Paper zDepth={1} rounded={false}>
+        style={styles.channel}>
+        <Paper zDepth={2} rounded={false} style={styles.stream}>
           {days}
         </Paper>
       </div>

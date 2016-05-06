@@ -3,7 +3,6 @@ import React from 'react'
 import dimensions from '../constants/dimensions'
 import colors from '../constants/colors'
 
-
 const height = dimensions.STREAM_HEIGHT -
                 2 * dimensions.BORDER_THICKNESS;
 
@@ -15,7 +14,7 @@ const styles = {
     height: height,
     borderWidth: dimensions.BORDER_THICKNESS,
     borderStyle: 'solid',
-    borderColor: colors.BORDER,
+    borderColor: colors.canvasColor,
     verticalAlign: 'bottom',
     overflowY: 'hidden',
     zIndex: 0,
@@ -34,14 +33,14 @@ const styles = {
     flex: '1 0 auto',
   },
   scheduled: {
-    backgroundColor: colors.SCHEDULED_CELL,
+    backgroundColor: colors.scheduledColor,
   },
   unscheduled: {
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.streamColor,
   },
   bar: {
     display: 'block',
-    background: colors.HOURS_BAR,
+    background: colors.barColor,
     position: 'absolute',
     bottom: 0,
     width: '100%',

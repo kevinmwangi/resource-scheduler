@@ -13,19 +13,22 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     width: dimensions.DAY_WIDTH - 2 * dimensions.BORDER_THICKNESS,
-    borderColor: colors.BORDER,
+    borderColor: colors.canvasColor,
     borderStyle: 'solid',
     borderWidth: dimensions.BORDER_THICKNESS,
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.streamColor,
   },
   weekday: {
-    backgroundColor: colors.WEEKDAY,
+    backgroundColor: colors.streamColor,
+    color: colors.textColor,
   },
   weekend: {
-    backgroundColor: colors.WEEKEND,
+    backgroundColor: colors.streamDisabledColor,
+    color: colors.textColor,
   },
   today: {
-    backgroundColor: colors.TODAY,
+    backgroundColor: colors.accent1Color,
+    color: colors.alternateTextColor,
   }
 }
 

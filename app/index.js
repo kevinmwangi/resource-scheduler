@@ -11,6 +11,7 @@ import initialState from './initialState'
 import { initialDataLoaded } from './actionCreators/'
 import reducers from './reducers'
 import ScheduleApp from './containers/ScheduleApp'
+import customLightTheme from './themes/customLightTheme';
 
 const logger = createLogger()
 
@@ -32,7 +33,7 @@ injectTapEventPlugin()
 
 ReactDom.render(
   <Provider store={store}>
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <MuiThemeProvider muiTheme={getMuiTheme(customLightTheme)}>
       <ScheduleApp />
     </MuiThemeProvider>
   </Provider>,

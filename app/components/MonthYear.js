@@ -11,10 +11,10 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'left',
     width: dimensions.DAY_WIDTH - 2 * dimensions.BORDER_THICKNESS,
-    borderColor: colors.BORDER,
+    borderColor: colors.canvasColor,
     borderStyle: 'solid',
     borderWidth: dimensions.BORDER_THICKNESS,
-    background: colors.BACKGROUND,
+    background: colors.streamColor,
   },
   cell: {
     marginLeft: 10,
