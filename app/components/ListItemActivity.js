@@ -7,7 +7,11 @@ const styles = {
   ListItem: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-  }
+  },
+  text: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
 }
 
 export default class ListItemActivity extends Component {
@@ -23,12 +27,15 @@ export default class ListItemActivity extends Component {
 
     return (
       <ListItem className="ListItemActivity"
-        primaryText={this.props.activity.name}
         leftAvatar={avatar}
         style={
           Object.assign(styles.ListItem, this.layoutStyles)
         }
-      />
+        >
+        <div style={styles.text}>
+          {this.props.activity.name}
+        </div>
+      </ListItem>
     )
   }
 }

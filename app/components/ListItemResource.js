@@ -7,7 +7,11 @@ const styles = {
   ListItem: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-  }
+  },
+  text: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
 }
 
 export default class ListItemResource extends Component {
@@ -23,12 +27,15 @@ export default class ListItemResource extends Component {
 
     return (
       <ListItem className="ListItemResource"
-        primaryText={this.props.resource.name}
         leftAvatar={avatar}
         style={
           Object.assign(styles.ListItem, this.layoutStyles)
         }
-      />
+        >
+        <div style={styles.text}>
+          {this.props.resource.name}
+        </div>
+      </ListItem>
     )
   }
 }
