@@ -20,7 +20,7 @@ const styles = {
     paddingLeft: 0,
   },
   NestedListItem: {
-    paddingLeft: 36,
+    paddingLeft: 56,
   }
 }
 
