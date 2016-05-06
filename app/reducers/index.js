@@ -6,6 +6,7 @@ import resources from './resources'
 import resourceActivityDays from './resourceActivityDays'
 import form from './form'
 import editing from './editing'
+import streams from './streams'
 
 export default combineReducers({
   activities,
@@ -14,4 +15,5 @@ export default combineReducers({
   resourceActivityDays,
   form,
   editing,
+  streams,
 })

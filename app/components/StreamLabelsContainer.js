@@ -33,7 +33,7 @@ export default function StreamLabelsContainer(props) {
   } = props
 
   const activityGroups = () => {
-    const groupedStreams = underscore.groupBy(streams, 'activity_id')
+    const groupedStreams = streams.groupedByActivity
     const list = []
 
     activities.ids.forEach((activity_id) => {
@@ -65,7 +65,7 @@ export default function StreamLabelsContainer(props) {
   }
 
   const resourceGroups = () => {
-    const groupedStreams = underscore.groupBy(streams, 'resource_id')
+    const groupedStreams = streams.groupedByResource
     const list = []
 
     resources.ids.forEach((resource_id) => {

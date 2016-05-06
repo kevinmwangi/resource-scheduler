@@ -6,7 +6,6 @@ import AppBar from 'material-ui/AppBar'
 
 import * as actionCreators from '../actionCreators'
 import Schedule from '../components/Schedule'
-import streamsSelector from '../selectors/streamsSelector'
 
 const styles = {
   ScheduleApp: {
@@ -44,6 +43,7 @@ function mapStateToProps({
     resources,
     resourceActivityDays,
     editing,
+    streams,
   }) {
 
   return {
@@ -52,12 +52,7 @@ function mapStateToProps({
     resources,
     resourceActivityDays,
     editing,
-    streams: streamsSelector({
-      activities,
-      days,
-      resources,
-      resourceActivityDays,
-    }),
+    streams,
   }
 }
 

@@ -64,6 +64,7 @@ export default class ScheduleTable extends Component {
     days: PropTypes.array.isRequired,
     resources: PropTypes.object.isRequired,
     resourceActivityDays: PropTypes.object.isRequired,
+    streams: PropTypes.object.isRequired,
   }
 
   constructor(props) {

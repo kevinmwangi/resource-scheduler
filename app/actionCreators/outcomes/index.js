@@ -3,4 +3,4 @@
 // Expressed in simple past tense
 // e.g. UPDATE_THING_FAILED
 
-// export {default as test} from './test'
+export {default as initialDataLoaded} from './initialDataLoaded'

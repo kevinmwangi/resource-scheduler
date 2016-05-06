@@ -6,6 +6,11 @@ const editing = {
   stream: false,
 }
 
+const streams = {
+  groupedByActivity: {},
+  groupedByResource: {},
+}
+
 const activities = {
   ids: [1,2,3,4],
   lookup: {
@@ -100,4 +105,5 @@ export default {
   days,
   resourceActivityDays: generateResourceActivityDays(),
   editing,
+  streams,
 }
