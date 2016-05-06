@@ -19,15 +19,19 @@ describe('reducer: activities.lookup', function() {
     })
   })
 
-  // describe(actionType.ACTION_NAME, function() {
-  //   it('removes the id', function() {
-  //     const state = ?
-  //     const action = {
-  //       type: actionType.ACTION_NAME
-  //       ?
-  //     }
-  //     expect(lookup(state, action)).toEqual(?)
-  //   })
-  // })
+  describe(actionType.CREATE_ACTIVITY_SUCCEEDED, function() {
+    it('indexes the new activity', function() {
+      const state = {}
+      const action = {
+        type: actionType.CREATE_ACTIVITY_SUCCEEDED,
+        data: {
+          activity: {id: 4, name: 'fun'}
+        },
+      }
+      expect(lookup(state, action)).toEqual({
+        '4': {id: 4, name: 'fun'}
+      })
+    })
+  })
 
 })

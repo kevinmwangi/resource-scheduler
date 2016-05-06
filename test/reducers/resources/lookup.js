@@ -19,15 +19,19 @@ describe('reducer: resources.lookup', function() {
     })
   })
 
-  // describe(actionType.ACTION_NAME, function() {
-  //   it('removes the id', function() {
-  //     const state = ?
-  //     const action = {
-  //       type: actionType.ACTION_NAME
-  //       ?
-  //     }
-  //     expect(lookup(state, action)).toEqual(?)
-  //   })
-  // })
+  describe(actionType.CREATE_RESOURCE_SUCCEEDED, function() {
+    it('indexes the new resource', function() {
+      const state = {}
+      const action = {
+        type: actionType.CREATE_RESOURCE_SUCCEEDED,
+        data: {
+          resource: {id: 4, name: 'trouble'}
+        },
+      }
+      expect(lookup(state, action)).toEqual({
+        '4': {id: 4, name: 'trouble'}
+      })
+    })
+  })
 
 })

@@ -19,15 +19,17 @@ describe('reducer: activities.ids', function() {
     })
   })
 
-  // describe(actionType.ACTION_NAME, function() {
-  //   it('removes the id', function() {
-  //     const state = ?
-  //     const action = {
-  //       type: actionType.ACTION_NAME
-  //       ?
-  //     }
-  //     expect(ids(state, action)).toEqual(?)
-  //   })
-  // })
+  describe(actionType.CREATE_ACTIVITY_SUCCEEDED, function() {
+    it('adds the new activity id', function() {
+      const state = [1,2]
+      const action = {
+        type: actionType.CREATE_ACTIVITY_SUCCEEDED,
+        data: {
+          activity: {id: 4, name: 'fun'}
+        }
+      }
+      expect(ids(state, action)).toEqual([1,2,4])
+    })
+  })
 
 })

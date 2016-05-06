@@ -1,15 +1,10 @@
 import action from '../../constants/actionTypes'
-import createStreamSucceeded from '../statuses/createStreamSucceeded'
+import createStreamSucceeded from '../outcomes/createStreamSucceeded'
+import creatingStream from '../statuses/creatingStream'
 
-export default function (name) {
+export default function (stream) {
   return function (dispatch) {
-    dispatch({
-    type: action.CREATE_STREAM,
-    data: {
-      stream: {}
-    }
-  })
-
-    dispatch(createStreamSucceeded())
+    dispatch(creatingStream(stream))
+    dispatch(createStreamSucceeded(stream))
   }
 }

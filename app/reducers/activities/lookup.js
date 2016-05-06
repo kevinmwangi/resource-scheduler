@@ -5,6 +5,9 @@ const initialState = {}
 export default function (state = initialState, action) {
 
   switch(action.type) {
+    case actionType.CREATE_ACTIVITY_SUCCEEDED:
+      const activity = action.data.activity
+      return Object.assign({}, state, {[activity.id]: activity})
 
     default:
       return state

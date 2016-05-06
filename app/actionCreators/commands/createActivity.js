@@ -1,15 +1,17 @@
 import action from '../../constants/actionTypes'
-import createActivitySucceeded from '../statuses/createActivitySucceeded'
+import createActivitySucceeded from '../outcomes/createActivitySucceeded'
+import creatingActivity from '../statuses/creatingActivity'
 
-export default function () {
-  return function (dispatch) {
-    dispatch({
-    type: action.CREATE_ACTIVITY,
-    data: {
-      activity: {}
-    }
-  })
+export default function (activity, more) {
 
-    dispatch(createActivitySucceeded())
+  return function (dispatch, getState) {
+    dispatch(creatingActivity(activity))
+
+    // Temporarily generate ids until database added
+    const { activities } = getState()
+    const pseudoId = Math.max(...activities.ids) + 1
+    const activityWithId = Object.assign({}, activity, {id: pseudoId})
+
+    dispatch(createActivitySucceeded(activityWithId))
   }
 }

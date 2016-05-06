@@ -19,15 +19,17 @@ describe('reducer: resources.ids', function() {
     })
   })
 
-  // describe(actionType.ACTION_NAME, function() {
-  //   it('removes the id', function() {
-  //     const state = ?
-  //     const action = {
-  //       type: actionType.ACTION_NAME
-  //       ?
-  //     }
-  //     expect(ids(state, action)).toEqual(?)
-  //   })
-  // })
+  describe(actionType.CREATE_RESOURCE_SUCCEEDED, function() {
+    it('adds the new resource id', function() {
+      const state = [1,2]
+      const action = {
+        type: actionType.CREATE_RESOURCE_SUCCEEDED,
+        data: {
+          resource: {id: 4, name: 'trouble'}
+        }
+      }
+      expect(ids(state, action)).toEqual([1,2,4])
+    })
+  })
 
 })
