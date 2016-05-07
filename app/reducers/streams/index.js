@@ -9,7 +9,7 @@ function stream ({
     activities,
     days,
     resourceActivityDays,
-  }) {
+  }, includeEmpty = false) {
 
   const anyScheduledDays = () => {
     const scheduledDaysOnly = days.map((day) => {
@@ -22,7 +22,7 @@ function stream ({
     return !!scheduledDaysOnly.length
   }
 
-  if (anyScheduledDays()){
+  if (includeEmpty || anyScheduledDays()){
     const slots = days.map(function (day) {
       const uid = `${day}:${resource_id}:${activity_id}`
       const scheduledSlot = resourceActivityDays.lookup[uid]
@@ -81,7 +81,28 @@ function streamsFor ({
         groupedByResource[resource_id].push(resourceActivityStream)
         groupedByActivity[activity_id].push(resourceActivityStream)
       }
+
     })
+
+    groupedByResource[resource_id].push(stream({
+      resource_id,
+      null,
+      resources,
+      activities,
+      days,
+      resourceActivityDays,
+    }, true))
+  })
+
+  activities.ids.forEach((activity_id) => {
+    groupedByActivity[activity_id].push(stream({
+      null,
+      activity_id,
+      resources,
+      activities,
+      days,
+      resourceActivityDays,
+    }, true))
   })
 
   return {

@@ -101,6 +101,37 @@ describe('reducer: streams', function() {
               ],
               resource_id: 3,
               uid: '3:1',
+            },
+            {
+              activity_id: 1,
+              resourceActivityDays: [
+                {
+                  "activity_id": 1,
+                  "day": "2016-04-24",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": 1,
+                  "day": "2016-04-25",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": 1,
+                  "day": "2016-04-26",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+              ],
+              resource_id: undefined,
+              uid: 'undefined:1',
             }
           ],
           '2': [
@@ -165,9 +196,72 @@ describe('reducer: streams', function() {
               ],
               resource_id: 3,
               uid: '3:2'
+            },
+            {
+              activity_id: 2,
+              resourceActivityDays: [
+                {
+                  "activity_id": 2,
+                  "day": "2016-04-24",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": 2,
+                  "day": "2016-04-25",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": 2,
+                  "day": "2016-04-26",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+              ],
+              resource_id: undefined,
+              uid: 'undefined:2',
             }
           ],
-          '3': [],
+          '3': [
+            {
+              activity_id: 3,
+              resourceActivityDays: [
+                {
+                  "activity_id": 3,
+                  "day": "2016-04-24",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": 3,
+                  "day": "2016-04-25",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": 3,
+                  "day": "2016-04-26",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": undefined,
+                  "scheduled": false,
+                },
+              ],
+              resource_id: undefined,
+              uid: 'undefined:3',
+            }
+          ],
         },
 
         groupedByResource: {
@@ -200,10 +294,74 @@ describe('reducer: streams', function() {
                   "scheduled": false,
                 },
               ],
-              resource_id: 1, uid: '1:2'
+              resource_id: 1,
+              uid: '1:2'
+            },
+            {
+              activity_id: undefined,
+              resourceActivityDays: [
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-24",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 1,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-25",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 1,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-26",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 1,
+                  "scheduled": false,
+                },
+              ],
+              resource_id: 1,
+              uid: '1:undefined',
             }
           ],
-          '2': [],
+          '2': [
+            {
+              activity_id: undefined,
+              resourceActivityDays: [
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-24",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 2,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-25",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 2,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-26",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 2,
+                  "scheduled": false,
+                },
+              ],
+              resource_id: 2,
+              uid: '2:undefined',
+            }
+          ],
           '3': [
             {
               activity_id: 1,
@@ -266,6 +424,37 @@ describe('reducer: streams', function() {
               ],
               resource_id: 3,
               uid: '3:2'
+            },
+            {
+              activity_id: undefined,
+              resourceActivityDays: [
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-24",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 3,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-25",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 3,
+                  "scheduled": false,
+                },
+                {
+                  "activity_id": undefined,
+                  "day": "2016-04-26",
+                  "hours": 0,
+                  "id": null,
+                  "resource_id": 3,
+                  "scheduled": false,
+                },
+              ],
+              resource_id: 3,
+              uid: '3:undefined',
             }
           ],
         }

@@ -16,7 +16,7 @@ const styles = {
 
 export default class ListItemActivity extends Component {
   static propTypes = {
-    activity: PropTypes.object.isRequired,
+    activityName: PropTypes.string.isRequired,
   }
 
   layoutStyles = this.props.layoutStyles || {}
@@ -33,7 +33,7 @@ export default class ListItemActivity extends Component {
         }
         >
         <div style={styles.text}>
-          {this.props.activity.name}
+          {this.props.activityName}
         </div>
       </ListItem>
     )

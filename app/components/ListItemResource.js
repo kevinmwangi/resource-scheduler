@@ -16,7 +16,7 @@ const styles = {
 
 export default class ListItemResource extends Component {
   static propTypes = {
-    resource: PropTypes.object.isRequired,
+    resourceName: PropTypes.string.isRequired,
   }
 
   layoutStyles = this.props.layoutStyles || {}
@@ -33,7 +33,7 @@ export default class ListItemResource extends Component {
         }
         >
         <div style={styles.text}>
-          {this.props.resource.name}
+          {this.props.resourceName}
         </div>
       </ListItem>
     )

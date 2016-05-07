@@ -56,10 +56,11 @@ export default function StreamLabelsContainer(props) {
       )
 
       streams.forEach((stream) => {
+        const resource = resources.lookup[stream.resource_id] || {}
         list.push(
           <ListItemResource
             key={stream.uid}
-            resource={resources.lookup[stream.resource_id]}
+            resourceName={resource.name || '-'}
             layoutStyles={styles.NestedListItem}
           />
         )
@@ -89,10 +90,11 @@ export default function StreamLabelsContainer(props) {
       )
 
       streams.forEach((stream) => {
+        const activity = activities.lookup[stream.activity_id] || {}
         list.push(
           <ListItemActivity
             key={stream.uid}
-            activity={activities.lookup[stream.activity_id]}
+            activityName={activity.name || '-'}
             layoutStyles={styles.NestedListItem}
           />
         )
