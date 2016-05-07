@@ -1,14 +1,17 @@
 import actionType from '../../constants/actionTypes'
 
-const initialState = {}
+const initialState = null
 
 export default function (state = initialState, action) {
 
   switch(action.type) {
-    case actionType.CREATE_RESOURCE_SUCCEEDED:
+
+    case actionType.CANCEL_EDIT_RESOURCE:
     case actionType.UPDATE_RESOURCE_SUCCEEDED:
-      const resource = action.data.resource
-      return Object.assign({}, state, {[resource.id]: resource})
+      return null
+
+    case actionType.EDIT_RESOURCE:
+      return action.data.resource
 
     default:
       return state

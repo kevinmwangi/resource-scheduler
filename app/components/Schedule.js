@@ -20,7 +20,9 @@ const styles = {
 export default function Schedule (props) {
   const {
     newResource, cancelNewResource, createResource,
+    editResource, cancelEditResource, updateResource,
     newActivity, cancelNewActivity, createActivity,
+    editActivity, cancelEditActivity, updateActivity,
     newStream, cancelNewStream, createStream,
     editing,
     streams,
@@ -32,19 +34,21 @@ export default function Schedule (props) {
     <div className="Schedule" style={styles.Schedule}>
 
       <EditorResource
-        isOpen={editing.resource}
-        onCancel={cancelNewResource}
-        onSubmit={createResource}
+        isOpen={!!editing.newResource || !!editing.existingResource}
+        onCancel={editing.newResource ? cancelNewResource : cancelEditResource}
+        onSubmit={editing.newResource ? createResource : updateResource}
+        resource={editing.newResource || editing.existingResource}
       />
 
       <EditorActivity
-        isOpen={editing.activity}
-        onCancel={cancelNewActivity}
-        onSubmit={createActivity}
+        isOpen={!!editing.newActivity || !!editing.existingActivity}
+        onCancel={editing.newActivity ? cancelNewActivity : cancelEditActivity}
+        onSubmit={editing.newActivity ? createActivity : updateActivity}
+        resource={editing.newActivity || editing.existingActivity}
       />
 
       <EditorStream
-        isOpen={editing.stream}
+        isOpen={!!editing.stream}
         onCancel={cancelNewStream}
         onSubmit={createStream}
         resources={resources}

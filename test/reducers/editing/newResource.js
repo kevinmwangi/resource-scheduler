@@ -1,13 +1,13 @@
 import actionType from '../../../app/constants/actionTypes'
 
-import resource from '../../../app/reducers/editing/resource'
+import newResource from '../../../app/reducers/editing/newResource'
 
-describe('reducer: editing.resource', function() {
+describe('reducer: editing.newResource', function() {
   describe('initial state', function() {
     it('is an empty array', function() {
       const state = undefined
       const action = {}
-      expect(resource(state, action)).toEqual(false)
+      expect(newResource(state, action)).toEqual(null)
     })
   })
 
@@ -15,38 +15,38 @@ describe('reducer: editing.resource', function() {
     it('returns the given state', function() {
       const state = true
       const action = {}
-      expect(resource(state, action)).toBe(state)
+      expect(newResource(state, action)).toBe(state)
     })
   })
 
+
   describe(actionType.NEW_RESOURCE, function() {
-    it('returns true', function() {
+    it('returns an empty resource', function() {
       const state = 'starting value'
       const action = {
         type: actionType.NEW_RESOURCE
       }
-      expect(resource(state, action)).toEqual(true)
+      expect(newResource(state, action)).toEqual({})
     })
   })
 
   describe(actionType.CANCEL_NEW_RESOURCE, function() {
-    it('returns false', function() {
-      const state = 'starting value'
+    it('returns null', function() {
+      const state = {}
       const action = {
         type: actionType.CANCEL_NEW_RESOURCE
       }
-      expect(resource(state, action)).toEqual(false)
+      expect(newResource(state, action)).toEqual(null)
     })
   })
 
   describe(actionType.CREATE_RESOURCE_SUCCEEDED, function() {
-    it('returns false', function() {
-      const state = 'starting value'
+    it('returns null', function() {
+      const state = {}
       const action = {
-        type: actionType.CANCEL_NEW_RESOURCE
+        type: actionType.CREATE_RESOURCE_SUCCEEDED
       }
-      expect(resource(state, action)).toEqual(false)
+      expect(newResource(state, action)).toEqual(null)
     })
   })
-
 })

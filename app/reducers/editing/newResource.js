@@ -1,6 +1,6 @@
 import actionType from '../../constants/actionTypes'
 
-const initialState = false
+const initialState = null
 
 export default function (state = initialState, action) {
 
@@ -8,10 +8,10 @@ export default function (state = initialState, action) {
 
     case actionType.CANCEL_NEW_RESOURCE:
     case actionType.CREATE_RESOURCE_SUCCEEDED:
-      return false
+      return null
 
     case actionType.NEW_RESOURCE:
-      return true
+      return {}
 
     default:
       return state

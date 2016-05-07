@@ -1,14 +1,17 @@
 import actionType from '../../constants/actionTypes'
 
-const initialState = {}
+const initialState = null
 
 export default function (state = initialState, action) {
 
   switch(action.type) {
-    case actionType.CREATE_ACTIVITY_SUCCEEDED:
+
+    case actionType.CANCEL_EDIT_ACTIVITY:
     case actionType.UPDATE_ACTIVITY_SUCCEEDED:
-      const activity = action.data.activity
-      return Object.assign({}, state, {[activity.id]: activity})
+      return null
+
+    case actionType.EDIT_ACTIVITY:
+      return action.data.activity
 
     default:
       return state

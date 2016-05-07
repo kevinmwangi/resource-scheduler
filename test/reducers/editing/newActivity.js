@@ -1,13 +1,13 @@
 import actionType from '../../../app/constants/actionTypes'
 
-import activity from '../../../app/reducers/editing/activity'
+import newActivity from '../../../app/reducers/editing/newActivity'
 
-describe('reducer: editing.activity', function() {
+describe('reducer: editing.newActivity', function() {
   describe('initial state', function() {
     it('is an empty array', function() {
       const state = undefined
       const action = {}
-      expect(activity(state, action)).toEqual(false)
+      expect(newActivity(state, action)).toEqual(null)
     })
   })
 
@@ -15,38 +15,39 @@ describe('reducer: editing.activity', function() {
     it('returns the given state', function() {
       const state = true
       const action = {}
-      expect(activity(state, action)).toBe(state)
+      expect(newActivity(state, action)).toBe(state)
     })
   })
 
 
   describe(actionType.NEW_ACTIVITY, function() {
-    it('returns true', function() {
-      const state = 'starting value'
+    it('returns an empty activity', function() {
+      const state = null
       const action = {
         type: actionType.NEW_ACTIVITY
       }
-      expect(activity(state, action)).toEqual(true)
+      expect(newActivity(state, action)).toEqual({})
     })
   })
 
   describe(actionType.CANCEL_NEW_ACTIVITY, function() {
-    it('returns false', function() {
-      const state = 'starting value'
+    it('returns null', function() {
+      const state = {}
       const action = {
         type: actionType.CANCEL_NEW_ACTIVITY
       }
-      expect(activity(state, action)).toEqual(false)
+      expect(newActivity(state, action)).toEqual(null)
     })
   })
 
   describe(actionType.CREATE_ACTIVITY_SUCCEEDED, function() {
-    it('returns false', function() {
-      const state = 'starting value'
+    it('returns null', function() {
+      const state = {}
       const action = {
-        type: actionType.CANCEL_NEW_ACTIVITY
+        type: actionType.CREATE_ACTIVITY_SUCCEEDED,
       }
-      expect(activity(state, action)).toEqual(false)
+      expect(newActivity(state, action)).toEqual(null)
     })
   })
+
 })

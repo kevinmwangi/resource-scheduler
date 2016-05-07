@@ -34,4 +34,25 @@ describe('reducer: resources.lookup', function() {
     })
   })
 
+  describe(actionType.UPDATE_RESOURCE_SUCCEEDED, function() {
+    it('updates the resource', function() {
+      const state = {
+        '3': {id: 4, name: 'bill'},
+        '4': {id: 4, name: 'michael'},
+        '5': {id: 4, name: 'jeff'},
+      }
+      const action = {
+        type: actionType.UPDATE_RESOURCE_SUCCEEDED,
+        data: {
+          resource: {id: 4, name: 'jacko'}
+        },
+      }
+      expect(lookup(state, action)).toEqual({
+        '3': {id: 4, name: 'bill'},
+        '4': {id: 4, name: 'jacko'},
+        '5': {id: 4, name: 'jeff'},
+      })
+    })
+  })
+
 })

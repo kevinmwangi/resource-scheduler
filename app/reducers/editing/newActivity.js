@@ -1,6 +1,6 @@
 import actionType from '../../constants/actionTypes'
 
-const initialState = false
+const initialState = null
 
 export default function (state = initialState, action) {
 
@@ -8,11 +8,10 @@ export default function (state = initialState, action) {
 
     case actionType.CANCEL_NEW_ACTIVITY:
     case actionType.CREATE_ACTIVITY_SUCCEEDED:
-      return false
+      return null
 
     case actionType.NEW_ACTIVITY:
-      return true
-
+      return {}
 
     default:
       return state

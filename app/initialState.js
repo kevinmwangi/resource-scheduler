@@ -1,9 +1,11 @@
 import moment from 'moment'
 
 const editing = {
-  resource: false,
-  activity: false,
-  stream: false,
+  existingResource: null,
+  existingActivity: null,
+  newResource: null,
+  newActivity: null,
+  stream: null,
 }
 
 const streams = {
