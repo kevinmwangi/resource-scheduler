@@ -4,7 +4,7 @@ import lookup from '../../../app/reducers/resources/lookup'
 
 describe('reducer: resources.lookup', function() {
   describe('initial state', function() {
-    it('is an empty array', function() {
+    it('is an empty object', function() {
       const state = undefined
       const action = {}
       expect(lookup(state, action)).toEqual({})

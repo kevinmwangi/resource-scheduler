@@ -4,7 +4,7 @@ import existingResource from '../../../app/reducers/editing/existingResource'
 
 describe('reducer: editing.existingResource', function() {
   describe('initial state', function() {
-    it('is an empty array', function() {
+    it('is null', function() {
       const state = undefined
       const action = {}
       expect(existingResource(state, action)).toEqual(null)

@@ -4,7 +4,7 @@ import stream from '../../../app/reducers/editing/stream'
 
 describe('reducer: editing.stream', function() {
   describe('initial state', function() {
-    it('is an empty array', function() {
+    it('is false', function() {
       const state = undefined
       const action = {}
       expect(stream(state, action)).toEqual(false)

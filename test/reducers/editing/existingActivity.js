@@ -4,7 +4,7 @@ import existingActivity from '../../../app/reducers/editing/existingActivity'
 
 describe('reducer: editing.existingActivity', function() {
   describe('initial state', function() {
-    it('is an empty array', function() {
+    it('is null', function() {
       const state = undefined
       const action = {}
       expect(existingActivity(state, action)).toEqual(null)

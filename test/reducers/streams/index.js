@@ -4,7 +4,7 @@ import streams from '../../../app/reducers/streams'
 
 describe('reducer: streams', function() {
   describe('initial state', function() {
-    it('is an empty array', function() {
+    it('is an empty object', function() {
       const state = undefined
       const action = {}
       expect(streams(state, action)).toEqual({})
@@ -20,7 +20,7 @@ describe('reducer: streams', function() {
   })
 
   describe(actionType.INITIAL_DATA_LOADED, function() {
-    it('removes the id', function() {
+    it('returns streams grouped by activity and resource', function() {
       const state = []
       const applicationState = {
         activities: {
