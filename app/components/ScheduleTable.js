@@ -45,8 +45,7 @@ const styles = {
     width: Dimensions.STREAM_LABEL_WIDTH,
     flex: '0 0 auto',
     zIndex: 3,
-    paddingLeft: 16,
-    paddingRight: 16,
+    height: Dimensions.STREAM_CONTAINER_HEIGHT,
   },
   streamLabels: {
     flex: 'none',

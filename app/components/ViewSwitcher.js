@@ -1,12 +1,12 @@
 import React from 'react'
-import SelectField from 'material-ui/SelectField';
+import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import colors from '../constants/colors'
 
 const styles = {
-  SelectField: {
-    flex: 'none',
+  DropDownMenu: {
     width: '100%',
-  }
+  },
 }
 
 export default function ViewSwitcher (props)  {
@@ -18,15 +18,14 @@ export default function ViewSwitcher (props)  {
   const handleChange = (event, index, value) => onViewGroupChange(value)
 
   return (
-    <SelectField
-      style={styles.SelectField}
-      value={props.viewGroupedBy}
-      floatingLabelText="Group streams by"
-      disabled={false}
+    <DropDownMenu
+      style={styles.DropDownMenu}
+      value={viewGroupedBy}
       onChange={handleChange}
-    >
-      <MenuItem value={'resource_id'} primaryText="Resource" />
-      <MenuItem value={'activity_id'} primaryText="Activity" />
-    </SelectField>
+      autoWidth={false}
+      >
+      <MenuItem value={'resource_id'} primaryText="Resources" />
+      <MenuItem value={'activity_id'} primaryText="Activities" />
+    </DropDownMenu>
   )
 }
