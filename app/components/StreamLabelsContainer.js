@@ -32,6 +32,8 @@ export default function StreamLabelsContainer(props) {
     resources,
     activities,
     viewGroupedBy,
+    editResource,
+    editActivity,
   } = props
 
   const activityGroups = () => {
@@ -48,6 +50,7 @@ export default function StreamLabelsContainer(props) {
         <ListGroupActivity
           key={`r${activity_id}`}
           activity={activity}
+          onEdit={() => editActivity(activity)}
           layoutStyles={styles.UnnestedListItem}
         />
       )
@@ -80,6 +83,7 @@ export default function StreamLabelsContainer(props) {
         <ListGroupResource
           key={`r${resource_id}`}
           resource={resource}
+          onEdit={() => editResource(resource)}
           layoutStyles={styles.UnnestedListItem}
         />
       )

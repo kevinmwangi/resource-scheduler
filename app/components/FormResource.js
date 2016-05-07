@@ -29,7 +29,7 @@ FormResource.propTypes = {
 
 FormResource = reduxForm({
   form: 'resource',
-  fields: ['name'],
+  fields: ['id', 'name'],
 })(FormResource)
 
 export default FormResource

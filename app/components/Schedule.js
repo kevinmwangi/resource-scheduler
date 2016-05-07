@@ -3,9 +3,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
 import ScheduleTable from '../components/ScheduleTable'
-import EditorStream from '../components/EditorStream'
-import EditorResource from '../components/EditorResource'
-import EditorActivity from '../components/EditorActivity'
+import DialogForm from '../components/DialogForm'
 import NewButton from '../components/NewButton'
 
 const styles = {
@@ -33,26 +31,37 @@ export default function Schedule (props) {
   return (
     <div className="Schedule" style={styles.Schedule}>
 
-      <EditorResource
-        isOpen={!!editing.newResource || !!editing.existingResource}
-        onCancel={editing.newResource ? cancelNewResource : cancelEditResource}
-        onSubmit={editing.newResource ? createResource : updateResource}
-        resource={editing.newResource || editing.existingResource}
+      <DialogForm
+        newEntity={editing.newResource}
+        existingEntity={editing.existingResource}
+        onCancelNew={cancelNewResource}
+        onCreate={createResource}
+        onCancelEdit={cancelEditResource}
+        onUpdate={updateResource}
+        formId='formResource'
+        entityType='Resource'
       />
 
-      <EditorActivity
-        isOpen={!!editing.newActivity || !!editing.existingActivity}
-        onCancel={editing.newActivity ? cancelNewActivity : cancelEditActivity}
-        onSubmit={editing.newActivity ? createActivity : updateActivity}
-        resource={editing.newActivity || editing.existingActivity}
+      <DialogForm
+        newEntity={editing.newActivity}
+        existingEntity={editing.existingActivity}
+        onCancelNew={cancelNewActivity}
+        onCreate={createActivity}
+        onCancelEdit={cancelEditActivity}
+        onUpdate={updateActivity}
+        formId='formActivity'
+        entityType='Activity'
       />
 
-      <EditorStream
-        isOpen={!!editing.stream}
-        onCancel={cancelNewStream}
-        onSubmit={createStream}
-        resources={resources}
-        activities={activities}
+      <DialogForm
+        newEntity={editing.stream}
+        existingEntity={null}
+        onCancelNew={cancelNewStream}
+        onCreate={createStream}
+        onCancelEdit={() => {}}
+        onUpdate={() => {}}
+        formId='formStream'
+        entityType='Stream'
       />
 
       <ScheduleTable

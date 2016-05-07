@@ -29,7 +29,7 @@ FormActivity.propTypes = {
 
 FormActivity = reduxForm({
   form: 'resource',
-  fields: ['name'],
+  fields: ['id', 'name'],
 })(FormActivity)
 
 export default FormActivity

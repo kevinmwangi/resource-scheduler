@@ -23,6 +23,7 @@ const styles = {
 export default class ListItemActivity extends Component {
   static propTypes = {
     activity: PropTypes.object.isRequired,
+    onEdit: PropTypes.func.isRequired,
   }
 
   layoutStyles = this.props.layoutStyles || {}
@@ -32,7 +33,7 @@ export default class ListItemActivity extends Component {
     const avatar = <Avatar icon={icon} />
 
     const editIcon = (
-      <IconButton onTouchTap={() => alert('resource')}>
+      <IconButton onTouchTap={this.props.onEdit}>
         <FontIcon className="material-icons" hoverColor={colors.accent1Color}>edit</FontIcon>
       </IconButton>
     )
