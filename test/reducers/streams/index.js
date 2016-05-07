@@ -24,24 +24,22 @@ describe('reducer: streams', function() {
       const state = []
       const applicationState = {
         activities: {
-          ids: [1,2,3,4],
+          ids: [1,2,3],
           lookup: {
             1: {id: 1, name: 'Holiday'},
             2: {id: 2, name: 'Project 1'},
             3: {id: 3, name: 'Project 2'},
-            4: {id: 4, name: 'Project 3'},
           }
         },
         days: [
-          '2016-04-24', '2016-04-25', '2016-04-26', '2016-04-27', '2016-04-28',
+          '2016-04-24', '2016-04-25', '2016-04-26'
         ],
         resources: {
-          ids: [1,2,3,4],
+          ids: [1,2,3],
           lookup: {
             1: {id: 1, name: 'neil'},
             2: {id: 2, name: 'room1'},
             3: {id: 3, name: 'jeff'},
-            4: {id: 4, name: 'jim'},
           }
         },
         resourceActivityDays: {
@@ -100,22 +98,6 @@ describe('reducer: streams', function() {
                   "resource_id": 3,
                   "scheduled": true,
                 },
-                {
-                  "activity_id": 1,
-                  "day": "2016-04-27",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 1,
-                  "day": "2016-04-28",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
               ],
               resource_id: 3,
               uid: '3:1',
@@ -144,22 +126,6 @@ describe('reducer: streams', function() {
                 {
                   "activity_id": 2,
                   "day": "2016-04-26",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 1,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-27",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 1,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-28",
                   "hours": 0,
                   "id": null,
                   "resource_id": 1,
@@ -196,29 +162,12 @@ describe('reducer: streams', function() {
                   "resource_id": 3,
                   "scheduled": true,
                 },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-27",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-28",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
               ],
               resource_id: 3,
               uid: '3:2'
             }
           ],
           '3': [],
-          '4': [],
         },
 
         groupedByResource: {
@@ -226,7 +175,7 @@ describe('reducer: streams', function() {
             {
               activity_id: 2,
               resourceActivityDays: [
-          {
+                {
                   "activity_id": 2,
                   "day": "2016-04-24",
                   "hours": 0,
@@ -245,22 +194,6 @@ describe('reducer: streams', function() {
                 {
                   "activity_id": 2,
                   "day": "2016-04-26",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 1,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-27",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 1,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-28",
                   "hours": 0,
                   "id": null,
                   "resource_id": 1,
@@ -299,22 +232,6 @@ describe('reducer: streams', function() {
                   "resource_id": 3,
                   "scheduled": true,
                 },
-                {
-                  "activity_id": 1,
-                  "day": "2016-04-27",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 1,
-                  "day": "2016-04-28",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
               ],
               resource_id: 3,
               uid: '3:1'
@@ -322,7 +239,7 @@ describe('reducer: streams', function() {
             {
               activity_id: 2,
               resourceActivityDays: [
-          {
+                {
                   "activity_id": 2,
                   "day": "2016-04-24",
                   "hours": 0,
@@ -346,28 +263,11 @@ describe('reducer: streams', function() {
                   "resource_id": 3,
                   "scheduled": true,
                 },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-27",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
-                {
-                  "activity_id": 2,
-                  "day": "2016-04-28",
-                  "hours": 0,
-                  "id": null,
-                  "resource_id": 3,
-                  "scheduled": false,
-                },
               ],
               resource_id: 3,
               uid: '3:2'
             }
           ],
-          '4': [],
         }
       }
 
