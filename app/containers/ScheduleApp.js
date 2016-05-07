@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import AppBar from 'material-ui/AppBar'
-
 import * as actionCreators from '../actionCreators'
 import Schedule from '../components/Schedule'
+import ScheduleAppBar from '../components/ScheduleAppBar'
 
 const styles = {
   ScheduleApp: {
@@ -14,24 +13,14 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   },
-  AppBar: {
-    flex: 'none',
-  },
 }
 
 class ScheduleApp extends Component {
   render () {
     return (
       <div className="ScheduleApp" style={styles.ScheduleApp}>
-        <AppBar
-          zDepth={2}
-          title="Resource Scheduler"
-          style={styles.AppBar}
-        />
-
-        <Schedule
-          {...this.props}
-        />
+        <ScheduleAppBar {...this.props} layoutStyles={{flex: 'none'}} />
+        <Schedule {...this.props}/>
       </div>
     )
   }

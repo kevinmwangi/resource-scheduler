@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import ScheduleTable from '../components/ScheduleTable'
 import DialogForm from '../components/DialogForm'
-import NewButton from '../components/NewButton'
 
 const styles = {
   Schedule: {
@@ -66,12 +65,6 @@ export default function Schedule (props) {
       <ScheduleTable
         {...props}
         style={styles.ScheduleTable}
-      />
-
-      <NewButton
-        onNewStream={newStream}
-        onNewResource={newResource}
-        onNewActivity={newActivity}
       />
 
     </div>
