@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux'
-
 import actionType from '../../constants/actionTypes'
 
 function stream ({
