@@ -7,6 +7,8 @@ import underscore from 'underscore'
 import Paper from 'material-ui/Paper'
 
 import StatefulDivider from './StatefulDivider'
+import ListGroupResource from './ListGroupResource'
+import ListGroupActivity from './ListGroupActivity'
 import ListItemResource from './ListItemResource'
 import ListItemActivity from './ListItemActivity'
 import dimensions from './../constants/dimensions'
@@ -43,7 +45,7 @@ export default function StreamLabelsContainer(props) {
       list.push(<StatefulDivider key={`d${activity_id}`} />)
 
       list.push(
-        <ListItemActivity
+        <ListGroupActivity
           key={`r${activity_id}`}
           activity={activity}
           layoutStyles={styles.UnnestedListItem}
@@ -75,7 +77,7 @@ export default function StreamLabelsContainer(props) {
       list.push(<StatefulDivider key={`d${resource_id}`} />)
 
       list.push(
-        <ListItemResource
+        <ListGroupResource
           key={`r${resource_id}`}
           resource={resource}
           layoutStyles={styles.UnnestedListItem}
