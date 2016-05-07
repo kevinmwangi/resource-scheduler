@@ -24,6 +24,7 @@ export default function Schedule (props) {
     streams,
     resources,
     activities,
+    streamGrouping,
   } = props
 
   return (

@@ -22,3 +22,5 @@ export {default as cancelEditActivity} from './cancelEditActivity'
 export {default as createStream} from './createStream'
 export {default as newStream} from './newStream'
 export {default as cancelNewStream} from './cancelNewStream'
+
+export {default as regroupStreams} from './regroupStreams'

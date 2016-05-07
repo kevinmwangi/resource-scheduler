@@ -44,6 +44,7 @@ function mapStateToProps({
     resourceActivityDays,
     editing,
     streams,
+    streamGrouping,
   }) {
 
   return {
@@ -53,6 +54,7 @@ function mapStateToProps({
     resourceActivityDays,
     editing,
     streams,
+    streamGrouping,
   }
 }
 

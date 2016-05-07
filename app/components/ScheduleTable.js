@@ -55,83 +55,66 @@ const styles = {
   },
 }
 
-export default class ScheduleTable extends Component {
+export default function ScheduleTable (props) {
 
-  static propTypes = {
-    activities: PropTypes.object.isRequired,
-    days: PropTypes.array.isRequired,
-    resources: PropTypes.object.isRequired,
-    resourceActivityDays: PropTypes.object.isRequired,
-    streams: PropTypes.object.isRequired,
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      viewGroupedBy: 'resource_id',
-    }
-  }
-
-  onViewGroupChange(viewGroupedBy) {
-    this.setState({
-      viewGroupedBy: viewGroupedBy,
-    })
-  }
-
-  onScrollStreams(event) {
+  const onScrollStreams = (event) => {
     const scrollLeft = event.target.scrollLeft
     document.getElementById('TimeStreamInnerWindow').scrollLeft = scrollLeft
   }
 
-  render () {
-    return (
-      <div className='ScheduleTable' style={styles.ScheduleTable}>
-        <Paper zDepth={2} rounded={false} style={styles.Paper}>
-          <div  style={styles.outerContainer}>
-            <Paper zDepth={1} rounded={false} style={styles.topLeftCorner} >
+  return (
+    <div className='ScheduleTable' style={styles.ScheduleTable}>
+      <Paper zDepth={2} rounded={false} style={styles.Paper}>
+        <div  style={styles.outerContainer}>
+          <Paper zDepth={1} rounded={false} style={styles.topLeftCorner} >
 
-              <ViewSwitcher
-                viewGroupedBy={this.state.viewGroupedBy}
-                onViewGroupChange={this.onViewGroupChange.bind(this)}
-              />
+            <ViewSwitcher
+              viewGroupedBy={props.streamGrouping}
+              onViewGroupChange={props.regroupStreams}
+            />
 
-            </Paper>
+          </Paper>
 
-            <Paper id="TimeStreamInnerWindow"
-              zDepth={2}
-              rounded={false}
-              style={styles.timeStream}
+          <Paper id="TimeStreamInnerWindow"
+            zDepth={2}
+            rounded={false}
+            style={styles.timeStream}
             >
 
-                <TimeStream days={this.props.days} />
+              <TimeStream days={props.days} />
+
+          </Paper>
+        </div>
+
+        <div style={styles.outerWindow}>
+          <div style={styles.outerContainer}>
+            <Paper zDepth={2} rounded={false} style={styles.streamLabels}>
+
+              <StreamLabelsContainer
+                {...props} viewGroupedBy={props.streamGrouping}/>
 
             </Paper>
-          </div>
 
-          <div style={styles.outerWindow}>
-            <div style={styles.outerContainer}>
-              <Paper zDepth={2} rounded={false} style={styles.streamLabels}>
+            <div id='StreamsContainer'
+              style={styles.streamsContainer}
+              onScroll={onScrollStreams} >
 
-                <StreamLabelsContainer
-                  {...this.props}
-                  viewGroupedBy={this.state.viewGroupedBy}/>
+              <ResourceActivityStreamsContainer
+                 {...props} viewGroupedBy={props.streamGrouping} />
 
-              </Paper>
-
-              <div id='StreamsContainer'
-                style={styles.streamsContainer}
-                onScroll={this.onScrollStreams} >
-
-                <ResourceActivityStreamsContainer
-                   {...this.props}
-                   viewGroupedBy={this.state.viewGroupedBy} />
-
-              </div>
             </div>
           </div>
+        </div>
+      </Paper>
+    </div>
+  )
+}
 
-        </Paper>
-      </div>
-    )
-  }
+ScheduleTable.propTypes = {
+  activities: PropTypes.object.isRequired,
+  days: PropTypes.array.isRequired,
+  resources: PropTypes.object.isRequired,
+  resourceActivityDays: PropTypes.object.isRequired,
+  streams: PropTypes.object.isRequired,
+  streamGrouping: PropTypes.string.isRequired,
 }
