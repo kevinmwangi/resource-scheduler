@@ -1,18 +1,5 @@
 import moment from 'moment'
 
-const editing = {
-  existingResource: null,
-  existingActivity: null,
-  newResource: null,
-  newActivity: null,
-  stream: null,
-}
-
-const streams = {
-  groupedByActivity: {},
-  groupedByResource: {},
-}
-
 const activities = {
   ids: [1,2,3,4],
   lookup: {
@@ -106,6 +93,4 @@ export default {
   activities,
   days,
   resourceActivityDays: generateResourceActivityDays(),
-  editing,
-  streams,
 }
