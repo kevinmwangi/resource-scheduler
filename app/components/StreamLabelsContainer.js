@@ -9,6 +9,7 @@ import ListGroupActivity from './ListGroupActivity'
 import ListItemResource from './ListItemResource'
 import ListItemActivity from './ListItemActivity'
 import dimensions from './../constants/dimensions'
+import animations from './../constants/animations'
 
 const styles = {
   List: {
@@ -111,11 +112,8 @@ export default function StreamLabelsContainer(props) {
 
   return (
     <List style={styles.List} className="StreamLabelsContainer">
-      <FlipMove
-        enterAnimation="fade"
-        leaveAnimation="fade"
-      >
-        {groups()}
+      <FlipMove {...animations.list}>
+        { groups() }
       </FlipMove>
     </List>
   )

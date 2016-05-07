@@ -5,6 +5,7 @@ import underscore from 'underscore'
 import StatefulDivider from './StatefulDivider'
 import ResourceActivityStream from './ResourceActivityStream'
 import dimensions from './../constants/dimensions'
+import animations from './../constants/animations'
 
 const styles = {
   List: {
@@ -85,10 +86,7 @@ export default function ResourceActivityStreamsContainer(props) {
 
   return (
     <div style={styles.List} className="ResourceActivityStreamsContainer">
-      <FlipMove
-        enterAnimation="fade"
-        leaveAnimation="fade"
-      >
+      <FlipMove {...animations.list}>
         {groups()}
       </FlipMove>
     </div>
