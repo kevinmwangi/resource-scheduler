@@ -1,10 +1,7 @@
 import React from 'react'
 import FlipMove from 'react-flip-move'
-import Avatar from 'material-ui/Avatar'
-import {List, ListItem} from 'material-ui/List'
-import FontIcon from 'material-ui/FontIcon'
+import {List} from 'material-ui/List'
 import underscore from 'underscore'
-import Paper from 'material-ui/Paper'
 
 import StatefulDivider from './StatefulDivider'
 import ListGroupResource from './ListGroupResource'

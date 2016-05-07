@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import Paper from 'material-ui/Paper'
 
 import DayOfMonthStream from './DayOfMonthStream'
 import MonthYearStream from './MonthYearStream'

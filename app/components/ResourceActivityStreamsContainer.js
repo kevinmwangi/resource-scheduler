@@ -1,15 +1,9 @@
 import React from 'react'
 import FlipMove from 'react-flip-move'
-import Avatar from 'material-ui/Avatar'
-import {List, ListItem} from 'material-ui/List'
-import FontIcon from 'material-ui/FontIcon'
 import underscore from 'underscore'
-import Paper from 'material-ui/Paper'
 
 import StatefulDivider from './StatefulDivider'
 import ResourceActivityStream from './ResourceActivityStream'
-import ListItemResource from './ListItemResource'
-import ListItemActivity from './ListItemActivity'
 import dimensions from './../constants/dimensions'
 
 const styles = {

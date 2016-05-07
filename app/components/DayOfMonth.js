@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import Badge from 'material-ui/Badge'
 import moment from 'moment'
 
 import dimensions from '../constants/dimensions'

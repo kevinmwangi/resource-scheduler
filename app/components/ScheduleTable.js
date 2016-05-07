@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import FlipMove from 'react-flip-move'
 import Paper from 'material-ui/Paper'
 
 import ResourceActivityStream from './ResourceActivityStream'
 import StreamLabelsContainer from './StreamLabelsContainer'
 import TimeStream from './TimeStream'
 import ResourceActivityStreamsContainer from './ResourceActivityStreamsContainer'
-import StreamLabel from './StreamLabel'
 import Dimensions from '../constants/dimensions'
 import ViewSwitcher from '../components/ViewSwitcher'
 

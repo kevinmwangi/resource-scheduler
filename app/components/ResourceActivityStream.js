@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
 
 import ResourceActivityDay from './ResourceActivityDay'
-import StreamLabel from './StreamLabel'
-import {ListItem} from 'material-ui/List'
 import dimensions from '../constants/dimensions'
 
 import colors from '../constants/colors'
