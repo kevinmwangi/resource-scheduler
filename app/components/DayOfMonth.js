@@ -22,7 +22,7 @@ const styles = {
     color: colors.textColor,
   },
   weekend: {
-    backgroundColor: colors.streamDisabledColor,
+    backgroundColor: colors.weekendDayColor,
     color: colors.textColor,
   },
   today: {

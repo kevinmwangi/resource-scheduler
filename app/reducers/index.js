@@ -8,6 +8,7 @@ import form from './form'
 import editing from './editing'
 import streams from './streams'
 import streamGrouping from './streamGrouping'
+import activeStream from './activeStream'
 
 export default combineReducers({
   activities,
@@ -18,4 +19,5 @@ export default combineReducers({
   editing,
   streams,
   streamGrouping,
+  activeStream,
 })

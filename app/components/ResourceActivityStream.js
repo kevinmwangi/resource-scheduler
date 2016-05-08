@@ -10,20 +10,33 @@ const styles = {
   channel: {
     whiteSpace: 'nowrap',
     display: 'inline-block',
+    paddingTop: dimensions.STREAM_SPACING,
+    paddingBottom: dimensions.STREAM_SPACING,
+    backgroundColor: 'none',
+  },
+  active: {
+
+  },
+  inactive: {
+
   },
   stream: {
-    marginTop: dimensions.STREAM_SPACING,
-    marginBottom: dimensions.STREAM_SPACING,
-  }
+  },
 }
 
 export default class ResourceActivityStream extends Component {
   static propTypes = {
     stream: PropTypes.object.isRequired,
+    isActive: PropTypes.bool.isRequired,
   }
 
   render() {
-    const days = this.props.stream.resourceActivityDays.map((day) => {
+    const {
+      isActive,
+      stream,
+    } = this.props
+
+    const days = stream.resourceActivityDays.map((day) => {
       return (
         <ResourceActivityDay
           key={day.day}
@@ -33,12 +46,14 @@ export default class ResourceActivityStream extends Component {
       )
     })
 
+    const activationStyle = isActive ? styles.active : styles.inactive
+    const zDepth = isActive ? 2 : 1
+
     return (
       <div
         className='ResourceActivityStream'
-        disabled={true}
-        style={styles.channel}>
-        <Paper zDepth={2} rounded={false} style={styles.stream}>
+        style={Object.assign({}, styles.channel, activationStyle)}>
+        <Paper zDepth={zDepth} rounded={false} style={styles.stream}>
           {days}
         </Paper>
       </div>

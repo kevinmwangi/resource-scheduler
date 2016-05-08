@@ -116,4 +116,5 @@ ScheduleTable.propTypes = {
   resourceActivityDays: PropTypes.object.isRequired,
   streams: PropTypes.object.isRequired,
   streamGrouping: PropTypes.string.isRequired,
+  activeStream: PropTypes.object.isRequired,
 }

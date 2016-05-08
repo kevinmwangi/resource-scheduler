@@ -24,6 +24,7 @@ export default function ResourceActivityStreamsContainer(props) {
     resources,
     activities,
     viewGroupedBy,
+    activeStream,
   } = props
 
   const activityGroups = () => {
@@ -42,6 +43,7 @@ export default function ResourceActivityStreamsContainer(props) {
         list.push(
           <ResourceActivityStream
             key={stream.uid}
+            isActive={stream.uid == activeStream.uid}
             stream={stream}
           />
         )
@@ -67,6 +69,7 @@ export default function ResourceActivityStreamsContainer(props) {
         list.push(
           <ResourceActivityStream
             key={stream.uid}
+            isActive={stream.uid == activeStream.uid}
             stream={stream}
           />
         )

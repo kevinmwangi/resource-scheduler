@@ -34,6 +34,7 @@ function mapStateToProps({
     editing,
     streams,
     streamGrouping,
+    activeStream,
   }) {
 
   return {
@@ -44,6 +45,7 @@ function mapStateToProps({
     editing,
     streams,
     streamGrouping,
+    activeStream,
   }
 }
 

@@ -32,6 +32,8 @@ export default function StreamLabelsContainer(props) {
     viewGroupedBy,
     editResource,
     editActivity,
+    activeStream,
+    changeActiveStream,
   } = props
 
   const activityGroups = () => {
@@ -58,6 +60,9 @@ export default function StreamLabelsContainer(props) {
         list.push(
           <ListItemResource
             key={stream.uid}
+            uid={stream.uid}
+            onTouchTap={changeActiveStream}
+            isActive={stream.uid == activeStream.uid}
             resourceName={resource.name || '-'}
             layoutStyles={styles.NestedListItem}
           />
@@ -92,6 +97,9 @@ export default function StreamLabelsContainer(props) {
         list.push(
           <ListItemActivity
             key={stream.uid}
+            uid={stream.uid}
+            onTouchTap={changeActiveStream}
+            isActive={stream.uid == activeStream.uid}
             activityName={activity.name || '-'}
             layoutStyles={styles.NestedListItem}
           />
