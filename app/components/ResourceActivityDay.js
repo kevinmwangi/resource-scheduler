@@ -3,8 +3,7 @@ import React from 'react'
 import dimensions from '../constants/dimensions'
 import colors from '../constants/colors'
 
-const height = dimensions.STREAM_HEIGHT -
-                2 * dimensions.BORDER_THICKNESS;
+const height = dimensions.STREAM_HEIGHT - 4 * dimensions.BORDER_THICKNESS
 
 const styles = {
   ResourceActivityDay: {
@@ -13,6 +12,10 @@ const styles = {
     width: dimensions.DAY_WIDTH - 2 * dimensions.BORDER_THICKNESS,
     height: height,
     borderWidth: dimensions.BORDER_THICKNESS,
+    borderTopWidth: dimensions.BORDER_THICKNESS,
+    borderBottomWidth: dimensions.BORDER_THICKNESS,
+    marginTop: dimensions.BORDER_THICKNESS,
+    marginBottom: dimensions.BORDER_THICKNESS,
     borderStyle: 'solid',
     borderColor: colors.canvasColor,
     verticalAlign: 'bottom',
