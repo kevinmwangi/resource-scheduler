@@ -10,7 +10,7 @@ const styles = {
   ListItem: {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    padding: '20px 56px 20px 73px',
+    padding: '20px 56px 20px 72px',
   },
   text: {
     overflow: 'hidden',
