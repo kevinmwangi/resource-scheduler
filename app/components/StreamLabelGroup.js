@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import Avatar from 'material-ui/Avatar'
 import { ListItem } from 'material-ui/List'
 import FontIcon from 'material-ui/FontIcon'
 import IconButton from 'material-ui/IconButton'
@@ -20,35 +19,41 @@ const styles = {
   },
 }
 
-export default class ListItemResource extends Component {
+export default class streamLabelGroup extends Component {
   static propTypes = {
-    resource: PropTypes.object.isRequired,
+    label: PropTypes.string.isRequired,
     onEdit: PropTypes.func.isRequired,
+    avatar: PropTypes.object.isRequired,
   }
 
-  layoutStyles = this.props.layoutStyles || {}
-
   render() {
-    const icon = <FontIcon className="material-icons">person</FontIcon>
-    const avatar = <Avatar icon={icon} />
+    const {
+      label,
+      onEdit,
+      avatar,
+      layoutStyles,
+    } = this.props
 
     const editIcon = (
-      <IconButton onTouchTap={this.props.onEdit}>
-        <FontIcon className="material-icons" hoverColor={colors.accent1Color}>edit</FontIcon>
+      <IconButton onTouchTap={onEdit}>
+        <FontIcon
+          className="material-icons"
+          hoverColor={colors.accent1Color}
+          >
+          edit
+        </FontIcon>
       </IconButton>
     )
 
     return (
-      <ListItem className="ListItemResource"
+      <ListItem className="ListItemActivity"
         leftAvatar={avatar}
         rightIconButton={editIcon}
         disabled={true}
-        style={
-          Object.assign(styles.ListItem, this.layoutStyles)
-        }
+        style={Object.assign({}, styles.ListItem, layoutStyles || {})}
         >
         <div style={styles.text}>
-          {this.props.resource.name}
+          {label}
         </div>
       </ListItem>
     )

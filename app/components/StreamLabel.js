@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Avatar from 'material-ui/Avatar'
 import { ListItem } from 'material-ui/List'
-import FontIcon from 'material-ui/FontIcon';
 
 import colors from '../constants/colors'
 
@@ -15,41 +13,45 @@ const styles = {
     textOverflow: 'ellipsis',
   },
   activated: {
+    color: colors.alternateTextColor,
     backgroundColor: colors.streamActiveColor,
   },
 }
 
-export default class ListItemResource extends Component {
+export default class StreamLabel extends Component {
   static propTypes = {
-    resourceName: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     uid: PropTypes.string.isRequired,
     isActive: PropTypes.bool.isRequired,
     onTouchTap: PropTypes.func.isRequired,
+    avatar: PropTypes.object.isRequired,
   }
 
-  layoutStyles = this.props.layoutStyles || {}
-
   render() {
-    const icon = <FontIcon className="material-icons">person</FontIcon>
-    const avatar = <Avatar icon={icon} />
-
-    const activationStyle = this.props.isActive ? styles.activated : {}
+    const {
+      label,
+      uid,
+      isActive,
+      onTouchTap,
+      avatar,
+      layoutStyles,
+    } = this.props
 
     return (
-      <ListItem className="ListItemResource"
+      <ListItem className="ListItemActivity"
         leftAvatar={avatar}
-        onTouchTap={() => this.props.onTouchTap(this.props.uid)}
+        onTouchTap={() => onTouchTap(uid)}
         style={
           Object.assign(
             {},
-            activationStyle,
+            isActive ? styles.activated : {},
             styles.ListItem,
-            this.layoutStyles
+            layoutStyles || {}
           )
         }
         >
         <div style={styles.text}>
-          {this.props.resourceName}
+          {label}
         </div>
       </ListItem>
     )

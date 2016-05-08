@@ -2,12 +2,12 @@ import React from 'react'
 import FlipMove from 'react-flip-move'
 import {List} from 'material-ui/List'
 import underscore from 'underscore'
+import Avatar from 'material-ui/Avatar'
+import FontIcon from 'material-ui/FontIcon'
 
 import StatefulDivider from './StatefulDivider'
-import ListGroupResource from './ListGroupResource'
-import ListGroupActivity from './ListGroupActivity'
-import ListItemResource from './ListItemResource'
-import ListItemActivity from './ListItemActivity'
+import StreamLabelGroup from './StreamLabelGroup'
+import StreamLabel from './StreamLabel'
 import dimensions from './../constants/dimensions'
 import animations from './../constants/animations'
 
@@ -36,6 +36,15 @@ export default function StreamLabelsContainer(props) {
     changeActiveStream,
   } = props
 
+  const resourceAvatar = (
+    <Avatar icon={<FontIcon className="material-icons">person</FontIcon>} />
+  )
+
+  const activityAvatar = (
+    <Avatar icon={<FontIcon className="material-icons">widgets</FontIcon>} />
+  )
+
+
   const activityGroups = () => {
     const groupedStreams = streams.groupedByActivity
     const list = []
@@ -47,24 +56,26 @@ export default function StreamLabelsContainer(props) {
       list.push(<StatefulDivider key={`d${activity_id}`} />)
 
       list.push(
-        <ListGroupActivity
-          key={`r${activity_id}`}
-          activity={activity}
+        <StreamLabelGroup
+          key={`a${activity_id}`}
+          label={activity.name}
           onEdit={() => editActivity(activity)}
           layoutStyles={styles.UnnestedListItem}
+          avatar={activityAvatar}
         />
       )
 
       streams.forEach((stream) => {
         const resource = resources.lookup[stream.resource_id] || {}
         list.push(
-          <ListItemResource
+          <StreamLabel
             key={stream.uid}
             uid={stream.uid}
             onTouchTap={changeActiveStream}
             isActive={stream.uid == activeStream.uid}
-            resourceName={resource.name || '-'}
+            label={resource.name || '-'}
             layoutStyles={styles.NestedListItem}
+            avatar={resourceAvatar}
           />
         )
       })
@@ -84,24 +95,26 @@ export default function StreamLabelsContainer(props) {
       list.push(<StatefulDivider key={`d${resource_id}`} />)
 
       list.push(
-        <ListGroupResource
+        <StreamLabelGroup
           key={`r${resource_id}`}
-          resource={resource}
+          label={resource.name}
           onEdit={() => editResource(resource)}
           layoutStyles={styles.UnnestedListItem}
+          avatar={resourceAvatar}
         />
       )
 
       streams.forEach((stream) => {
         const activity = activities.lookup[stream.activity_id] || {}
         list.push(
-          <ListItemActivity
+          <StreamLabel
             key={stream.uid}
             uid={stream.uid}
             onTouchTap={changeActiveStream}
             isActive={stream.uid == activeStream.uid}
-            activityName={activity.name || '-'}
+            label={activity.name || '-'}
             layoutStyles={styles.NestedListItem}
+            avatar={activityAvatar}
           />
         )
       })
