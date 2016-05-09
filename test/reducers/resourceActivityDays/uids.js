@@ -1,13 +1,13 @@
 import actionType from '../../../app/constants/actionTypes'
 
-import ids from '../../../app/reducers/resourceActivityDays/ids'
+import uids from '../../../app/reducers/resourceActivityDays/uids'
 
-describe('reducer: resourceActivityDays.ids', function() {
+describe('reducer: resourceActivityDays.uids', function() {
   describe('initial state', function() {
     it('is an empty array', function() {
       const state = undefined
       const action = {}
-      expect(ids(state, action)).toEqual([])
+      expect(uids(state, action)).toEqual([])
     })
   })
 
@@ -15,18 +15,18 @@ describe('reducer: resourceActivityDays.ids', function() {
     it('returns the given state', function() {
       const state = []
       const action = {}
-      expect(ids(state, action)).toBe(state)
+      expect(uids(state, action)).toBe(state)
     })
   })
 
   // describe(actionType.ACTION_NAME, function() {
-  //   it('removes the id', function() {
+  //   it('?', function() {
   //     const state = ?
   //     const action = {
   //       type: actionType.ACTION_NAME
   //       ?
   //     }
-  //     expect(ids(state, action)).toEqual(?)
+  //     expect(uids(state, action)).toEqual(?)
   //   })
   // })
 

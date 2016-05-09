@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import ids from './ids'
+import uids from './uids'
 import lookup from './lookup'
 
 export default combineReducers({
-  ids,
+  uids,
   lookup,
 })
