@@ -9,7 +9,7 @@ function stream ({
     resourceActivityDays,
   }, includeEmpty = false) {
 
-  const anyScheduledDays = () => {
+  const anyScheduledOrWorkedDays = () => {
     const scheduledDaysOnly = days.map((day) => {
       const uid = `${day}:${resource_id}:${activity_id}`
       return resourceActivityDays.lookup[uid]
@@ -20,20 +20,20 @@ function stream ({
     return !!scheduledDaysOnly.length
   }
 
-  if (includeEmpty || anyScheduledDays()){
+  if (includeEmpty || anyScheduledOrWorkedDays()){
     const slots = days.map(function (day) {
       const uid = `${day}:${resource_id}:${activity_id}`
       const scheduledSlot = resourceActivityDays.lookup[uid]
 
       if (scheduledSlot) {
-        return Object.assign(scheduledSlot, {scheduled: true})
+        return scheduledSlot
       } else {
         return {
           id: null,
           day: day,
           resource_id,
           activity_id,
-          hours: 0,
+          hours: undefined,
           scheduled: false,
         }
       }

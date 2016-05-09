@@ -70,7 +70,7 @@ export default function ResourceActivityDay(props) {
       style={Object.assign(styles.ResourceActivityDay, backgroundStyles)}>
       <div style={styles.textContainer}>
         <div style={styles.text}>
-          {scheduled && hrsKnown ? hours : ''}
+          {hrsKnown ? hours : ''}
         </div>
       </div>
       <div style={barStyles}/>

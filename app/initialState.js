@@ -37,9 +37,9 @@ function generateDays(periodStart, periodLength) {
 
 const days = generateDays(periodStart, periodLength)
 
-function generateSingleResourceActivityDay (resource_id, activity_id, idCounter, day) {
+function generateSingleResourceActivityDay (resource_id, activity_id, idCounter, day, dayToBeWorked, dayToBeScheduled) {
   const isPast = moment(day).isBefore(moment(), 'day')
-  const hours = isPast ? Math.round(Math.random() * 6) : '?'
+  const hours = (isPast && dayToBeWorked) ? Math.round(Math.random() * 6) : undefined
 
   const uid = `${day}:${resource_id}:${activity_id}`
 
@@ -50,6 +50,7 @@ function generateSingleResourceActivityDay (resource_id, activity_id, idCounter,
     day,
     hours,
     uid,
+    scheduled: dayToBeScheduled,
   }
 }
 
@@ -66,12 +67,14 @@ function generateResourceActivityDays () {
         days.forEach((day) => {
           const dayOfWeek = moment(day).day()
           const isWeekday = dayOfWeek > 0 && dayOfWeek < 6
-          const dayToBeScheduled = Math.random() > 0.2 && isWeekday
+          const dayToBeScheduledOrWorked = Math.random() > 0.2 && isWeekday
 
-          if (dayToBeScheduled) {
+          if (dayToBeScheduledOrWorked) {
             idCounter++
+            const dayToBeWorked = Math.random() > 0.1
+            const dayToBeScheduled = Math.random() > 0.1 && isWeekday
             const scheduledDay = generateSingleResourceActivityDay(
-              resource_id, activity_id, idCounter, day
+              resource_id, activity_id, idCounter, day, dayToBeWorked, dayToBeScheduled
             )
 
             ids.push(scheduledDay.uid)
