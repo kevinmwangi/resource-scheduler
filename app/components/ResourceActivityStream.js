@@ -42,6 +42,8 @@ export default class ResourceActivityStream extends Component {
           key={day.day}
           hours={day.hours}
           scheduled={day.scheduled}
+          streamIsActive={isActive}
+          isSelected={false}
         />
       )
     })

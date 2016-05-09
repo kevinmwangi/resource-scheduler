@@ -14,7 +14,7 @@ const styles = {
   },
   activated: {
     color: colors.alternateTextColor,
-    backgroundColor: colors.streamActiveColor,
+    backgroundColor: colors.streamLabelActiveColor,
   },
 }
 

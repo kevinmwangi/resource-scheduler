@@ -11,5 +11,6 @@ export default Object.assign({
   barColor: fade(palette.primary1Color, 0.9),
   weekendDayColor: fade(darkBlack, 0.2),
   streamColor: fade(darkBlack, 0.06),
-  streamActiveColor: palette.accent1Color,
+  streamLabelActiveColor: palette.accent1Color,
+  streamActiveColor: fade(palette.accent1Color, 0.2),
 }, palette)
