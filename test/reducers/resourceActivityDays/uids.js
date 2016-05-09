@@ -18,16 +18,4 @@ describe('reducer: resourceActivityDays.uids', function() {
       expect(uids(state, action)).toBe(state)
     })
   })
-
-  // describe(actionType.ACTION_NAME, function() {
-  //   it('?', function() {
-  //     const state = ?
-  //     const action = {
-  //       type: actionType.ACTION_NAME
-  //       ?
-  //     }
-  //     expect(uids(state, action)).toEqual(?)
-  //   })
-  // })
-
 })

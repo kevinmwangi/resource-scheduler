@@ -1,13 +1,13 @@
 import actionType from '../../../app/constants/actionTypes'
 
-import streamGrouping from '../../../app/reducers/streamGrouping'
+import grouping from '../../../app/reducers/streams/grouping'
 
-describe('reducer: streamGrouping', function() {
+describe('reducer: grouping', function() {
   describe('initial state', function() {
     it('is resource', function() {
       const state = undefined
       const action = {}
-      expect(streamGrouping(state, action)).toEqual('resource_id')
+      expect(grouping(state, action)).toEqual('resource_id')
     })
   })
 
@@ -15,7 +15,7 @@ describe('reducer: streamGrouping', function() {
     it('returns the given state', function() {
       const state = 'something'
       const action = {}
-      expect(streamGrouping(state, action)).toBe(state)
+      expect(grouping(state, action)).toBe(state)
     })
   })
 
@@ -28,7 +28,7 @@ describe('reducer: streamGrouping', function() {
           groupBy: 'activity_id',
         }
       }
-      expect(streamGrouping(state, action)).toEqual('activity_id')
+      expect(grouping(state, action)).toEqual('activity_id')
     })
   })
 })

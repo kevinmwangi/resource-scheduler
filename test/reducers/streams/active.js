@@ -1,13 +1,13 @@
 import actionType from '../../../app/constants/actionTypes'
 
-import activeStream from '../../../app/reducers/activeStream'
+import active from '../../../app/reducers/streams/active'
 
-describe('reducer: activeStream', function() {
+describe('reducer: active', function() {
   describe('initial state', function() {
     it('returns undefined', function() {
       const state = undefined
       const action = {}
-      expect(activeStream(state, action)).toEqual({uid: undefined})
+      expect(active(state, action)).toEqual({uid: undefined})
     })
   })
 
@@ -15,7 +15,7 @@ describe('reducer: activeStream', function() {
     it('returns the given state', function() {
       const state = 'something'
       const action = {}
-      expect(activeStream(state, action)).toBe(state)
+      expect(active(state, action)).toBe(state)
     })
   })
 
@@ -28,7 +28,7 @@ describe('reducer: activeStream', function() {
           uid: '2:1',
         }
       }
-      expect(activeStream(state, action)).toEqual({
+      expect(active(state, action)).toEqual({
         uid: '2:1',
       })
     })
@@ -41,7 +41,7 @@ describe('reducer: activeStream', function() {
           uid: '2:1',
         }
       }
-      expect(activeStream(state, action)).toEqual({
+      expect(active(state, action)).toEqual({
         uid: undefined,
       })
     })

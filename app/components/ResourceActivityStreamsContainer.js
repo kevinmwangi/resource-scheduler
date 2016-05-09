@@ -1,6 +1,5 @@
 import React from 'react'
 import FlipMove from 'react-flip-move'
-import underscore from 'underscore'
 
 import StatefulDivider from './StatefulDivider'
 import ResourceActivityStream from './ResourceActivityStream'
@@ -24,26 +23,27 @@ export default function ResourceActivityStreamsContainer(props) {
     resources,
     activities,
     viewGroupedBy,
-    activeStream,
+    streamsGroupedByActivities,
+    streamsGroupedByResources,
   } = props
 
   const activityGroups = () => {
-    const groupedStreams = streams.groupedByActivity
+    const groupedStreams = streamsGroupedByActivities
     const list = []
 
     activities.ids.forEach((activity_id) => {
       const activity = activities.lookup[activity_id]
-      const streams = groupedStreams[activity_id] || []
+      const streamsGroupedByActivity = groupedStreams[activity_id] || []
 
       list.push(<StatefulDivider key={`d${activity_id}`} />)
 
       list.push(<div key={`r${activity_id}`} style={{height: dimensions.STREAM_CONTAINER_HEIGHT}} />)
 
-      streams.forEach((stream) => {
+      streamsGroupedByActivity.forEach((stream) => {
         list.push(
           <ResourceActivityStream
             key={stream.uid}
-            isActive={stream.uid == activeStream.uid}
+            isActive={stream.uid == streams.active.uid}
             stream={stream}
           />
         )
@@ -54,22 +54,22 @@ export default function ResourceActivityStreamsContainer(props) {
   }
 
   const resourceGroups = () => {
-    const groupedStreams = streams.groupedByResource
+    const groupedStreams = streamsGroupedByResources
     const list = []
 
     resources.ids.forEach((resource_id) => {
       const resource = resources.lookup[resource_id]
-      const streams = groupedStreams[resource_id] || []
+      const streamsGroupedByResource = groupedStreams[resource_id] || []
 
       list.push(<StatefulDivider key={`d${resource_id}`} />)
 
       list.push(<div key={`r${resource_id}`} style={styles.groupStream} />)
 
-      streams.forEach((stream) => {
+      streamsGroupedByResource.forEach((stream) => {
         list.push(
           <ResourceActivityStream
             key={stream.uid}
-            isActive={stream.uid == activeStream.uid}
+            isActive={stream.uid == streams.active.uid}
             stream={stream}
           />
         )

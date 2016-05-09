@@ -36,7 +36,7 @@ export default class ResourceActivityStream extends Component {
       stream,
     } = this.props
 
-    const days = stream.resourceActivityDays.map((day) => {
+    const days = stream.streamDays.map((day) => {
       return (
         <ResourceActivityDay
           key={day.day}

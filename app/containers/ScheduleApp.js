@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actionCreators'
 import Schedule from '../components/Schedule'
 import ScheduleAppBar from '../components/ScheduleAppBar'
+import getGroupedStreams from '../selectors/getGroupedStreams'
 
 const styles = {
   ScheduleApp: {
@@ -26,27 +27,15 @@ class ScheduleApp extends Component {
   }
 }
 
-function mapStateToProps({
-    activities,
-    days,
-    resources,
-    resourceActivityDays,
-    editing,
-    streams,
-    streamGrouping,
-    activeStream,
-  }) {
-
-  return {
-    activities,
-    days,
-    resources,
-    resourceActivityDays,
-    editing,
-    streams,
-    streamGrouping,
-    activeStream,
-  }
+function mapStateToProps(state) {
+  return Object.assign({
+    activities: state.activities,
+    days: state.days,
+    resources: state.resources,
+    resourceActivityDays: state.resourceActivityDays,
+    editing: state.editing,
+    streams: state.streams,
+  }, getGroupedStreams(state))
 }
 
 function mapDispatchToProps(dispatch) {
