@@ -19,12 +19,13 @@ export default function Schedule (props) {
     newActivity, cancelNewActivity, createActivity,
     editActivity, cancelEditActivity, updateActivity,
     newStream, cancelNewStream, createStream,
-    editing,
-    streams,
-    resources,
+    activeStream,
     activities,
+    editing,
+    resources,
     streamsGroupedByActivities,
-    streamsGroupedByResources
+    streamsGroupedByResources,
+    streamGrouping,
   } = props
 
   return (

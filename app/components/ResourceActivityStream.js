@@ -26,35 +26,48 @@ const styles = {
 
 export default class ResourceActivityStream extends Component {
   static propTypes = {
-    stream: PropTypes.object.isRequired,
     isActive: PropTypes.bool.isRequired,
+    resourceActivityDays: PropTypes.object.isRequired,
+    selectionModeOn: PropTypes.bool.isRequired,
+    selectedStreamDaysLookup: PropTypes.object.isRequired,
+    stream: PropTypes.object.isRequired,
   }
 
   render() {
     const {
       isActive,
+      resourceActivityDays,
+      selectionModeOn,
+      selectedStreamDaysLookup,
       stream,
     } = this.props
 
     const days = stream.streamDays.map((day) => {
       return (
         <ResourceActivityDay
-          key={day.day}
+          key={day.uid}
           hours={day.hours}
           scheduled={day.scheduled}
           streamIsActive={isActive}
-          isSelected={false}
+          selectionModeOn={selectionModeOn}
+          isSelected={!!selectedStreamDaysLookup[day.uid]}
+          uid={day.uid}
         />
       )
     })
 
     const activationStyle = isActive ? styles.active : styles.inactive
+    const zDepth = isActive ? 2 : 1
 
     return (
       <div
         className='ResourceActivityStream'
         style={Object.assign({}, styles.channel, activationStyle)}>
-        <Paper zDepth={2} rounded={false} style={styles.stream}>
+        <Paper
+          zDepth={zDepth}
+          rounded={false}
+          style={styles.stream}
+          >
           {days}
         </Paper>
       </div>

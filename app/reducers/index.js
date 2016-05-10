@@ -1,19 +1,21 @@
 import { combineReducers } from 'redux'
 
+import activeStream from './activeStream'
 import activities from './activities'
 import days from './days'
 import resources from './resources'
 import resourceActivityDays from './resourceActivityDays'
 import form from './form'
 import editing from './editing'
-import streams from './streams'
+import streamGrouping from './streamGrouping'
 
 export default combineReducers({
+  activeStream,
   activities,
   days,
-  resources,
-  resourceActivityDays,
-  form,
   editing,
-  streams,
+  form,
+  resourceActivityDays,
+  resources,
+  streamGrouping,
 })

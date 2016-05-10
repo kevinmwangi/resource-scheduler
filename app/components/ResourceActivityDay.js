@@ -6,7 +6,7 @@ import colors from '../constants/colors'
 const height = dimensions.STREAM_HEIGHT - 4 * dimensions.BORDER_THICKNESS
 
 const styles = {
-  ResourceActivityDay: {
+  container: {
     display: 'inline-block',
     position: 'relative',
     width: dimensions.DAY_WIDTH - 2 * dimensions.BORDER_THICKNESS,
@@ -61,15 +61,15 @@ const styles = {
     zIndex: 3,
   },
   overlaySelected: {
-    boxShadow: 'inset 0px 2px 6px rgba(0, 0, 0, 0.3 )',
+    boxShadow: `inset 0px 4px 8px ${colors.dayInsetColor}`,
+    backgroundColor: colors.daySelectedColor,
   },
   overlayUnselected: {
-    boxShadow: 'inset 0px 0px 0px rgba(0, 0, 0, 0.3)',
+    boxShadow: 'none',
   },
   overlayStreamActive: {
     pointerEvents: 'auto',
     cursor: 'pointer',
-    backgroundColor: colors.streamActiveColor,
   },
   overlayStreamInactive: {
     pointerEvents: 'none',
@@ -83,13 +83,15 @@ export default function ResourceActivityDay(props) {
     scheduled,
     hours,
     isSelected,
+    selectionModeOn,
     streamIsActive,
+    uid,
   } = props
 
   const hrsKnown = typeof hours == 'number'
-  const backgroundStyles = Object.assign(
+  const containerStyles = Object.assign(
     {},
-    styles.ResourceActivityDay,
+    styles.container,
     scheduled ? styles.scheduled : styles.unscheduled
   )
 
@@ -103,20 +105,23 @@ export default function ResourceActivityDay(props) {
   const overlayStyles = Object.assign(
     {},
     styles.overlay,
-    isSelected ? styles.overlaySelected : styles.overlayUnselected,
-    streamIsActive ? styles.overlayStreamActive : styles.overlayStreamInactive
+    streamIsActive ? styles.overlayStreamActive : styles.overlayStreamInactive,
+    isSelected ? styles.overlaySelected : styles.overlayUnselected
   )
 
   return (
     <div
       className="ResourceActivityDay"
-      style={backgroundStyles}>
+      style={containerStyles}>
       <div style={styles.textContainer}>
         <div style={styles.text}>
           {hrsKnown ? hours : ''}
         </div>
       </div>
-      <div className="Overlay" style={overlayStyles} />
+      <div
+        className="Overlay"
+        style={overlayStyles}
+      />
       <div style={barStyles}/>
     </div>
   )
@@ -126,4 +131,6 @@ ResourceActivityDay.propTypes = {
   scheduled: PropTypes.bool.isRequired,
   isSelected: PropTypes.bool.isRequired,
   streamIsActive: PropTypes.bool.isRequired,
+  uid: PropTypes.string.isRequired,
+  selectionModeOn: PropTypes.bool.isRequired,
 }

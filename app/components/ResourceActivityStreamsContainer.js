@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import FlipMove from 'react-flip-move'
 
 import StatefulDivider from './StatefulDivider'
@@ -19,13 +19,17 @@ const styles = {
 
 export default function ResourceActivityStreamsContainer(props) {
   const {
-    streams,
-    resources,
+    activeStream,
     activities,
-    viewGroupedBy,
+    resourceActivityDays,
+    resources,
     streamsGroupedByActivities,
     streamsGroupedByResources,
+    viewGroupedBy,
   } = props
+
+  const selectionModeOn = activeStream.selectionModeOn
+
 
   const activityGroups = () => {
     const groupedStreams = streamsGroupedByActivities
@@ -40,10 +44,16 @@ export default function ResourceActivityStreamsContainer(props) {
       list.push(<div key={`r${activity_id}`} style={{height: dimensions.STREAM_CONTAINER_HEIGHT}} />)
 
       streamsGroupedByActivity.forEach((stream) => {
+        const isActive = stream.uid == activeStream.uid
+        const lookup = isActive ? activeStream.selectedStreamDaysLookup : {}
+
         list.push(
           <ResourceActivityStream
             key={stream.uid}
-            isActive={stream.uid == streams.active.uid}
+            isActive={isActive}
+            resourceActivityDays={resourceActivityDays}
+            selectedStreamDaysLookup={lookup}
+            selectionModeOn={isActive && selectionModeOn}
             stream={stream}
           />
         )
@@ -66,10 +76,16 @@ export default function ResourceActivityStreamsContainer(props) {
       list.push(<div key={`r${resource_id}`} style={styles.groupStream} />)
 
       streamsGroupedByResource.forEach((stream) => {
+        const isActive = stream.uid == activeStream.uid
+        const lookup = isActive ? activeStream.selectedStreamDaysLookup : {}
+
         list.push(
           <ResourceActivityStream
             key={stream.uid}
-            isActive={stream.uid == streams.active.uid}
+            isActive={isActive}
+            resourceActivityDays={resourceActivityDays}
+            selectedStreamDaysLookup={lookup}
+            selectionModeOn={isActive && selectionModeOn}
             stream={stream}
           />
         )
@@ -96,3 +112,12 @@ export default function ResourceActivityStreamsContainer(props) {
   )
 }
 
+ResourceActivityStreamsContainer.propTypes = {
+  activeStream: PropTypes.object.isRequired,
+  activities: PropTypes.object.isRequired,
+  resourceActivityDays: PropTypes.object.isRequired,
+  resources: PropTypes.object.isRequired,
+  streamsGroupedByActivities: PropTypes.object.isRequired,
+  streamsGroupedByResources: PropTypes.object.isRequired,
+  viewGroupedBy: PropTypes.string.isRequired,
+}

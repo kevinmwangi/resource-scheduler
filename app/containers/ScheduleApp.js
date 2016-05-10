@@ -29,12 +29,13 @@ class ScheduleApp extends Component {
 
 function mapStateToProps(state) {
   return Object.assign({
+    activeStream: state.activeStream,
     activities: state.activities,
     days: state.days,
-    resources: state.resources,
-    resourceActivityDays: state.resourceActivityDays,
     editing: state.editing,
-    streams: state.streams,
+    resourceActivityDays: state.resourceActivityDays,
+    resources: state.resources,
+    streamGrouping: state.streamGrouping,
   }, getGroupedStreams(state))
 }
 

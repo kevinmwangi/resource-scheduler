@@ -54,7 +54,7 @@ function generateSingleResourceActivityDay (resource_id, activity_id, idCounter,
   }
 }
 
-function generateResourceActivityDays () {
+const resourceActivityDays = (function generateResourceActivityDays () {
   let uids = []
   let lookup = {}
   let idCounter = 0
@@ -89,11 +89,51 @@ function generateResourceActivityDays () {
     uids,
     lookup,
   }
+})()
+
+// -----------------------------------------
+// Calculate active stream and selected days
+
+const sampledDayUid = resourceActivityDays.uids[
+  Math.floor(Math.random() * resourceActivityDays.uids.length)
+]
+
+const sampledDay = resourceActivityDays.lookup[sampledDayUid]
+
+const activeResourceId = sampledDay.resource_id
+const activeActivityId = sampledDay.activity_id
+const activeStreamUid = `${activeResourceId}:${activeActivityId}`
+
+
+const selectedStreamDaysLookup = function () {
+  const dayCount = days.length
+  const startDatePosition = Math.floor(Math.random() * 0.5 * dayCount)
+  const remainingDayCount = dayCount - startDatePosition
+  const endDatePosition = Math.floor(Math.random() * remainingDayCount)
+
+  const selectedDays = days.slice(
+    startDatePosition, startDatePosition + endDatePosition
+  )
+
+  const selectedUidsLookup = {}
+
+  selectedDays.forEach((day) => {
+    const key = `${day}:${activeResourceId}:${activeActivityId}`
+    selectedUidsLookup[key] = true
+  })
+
+  return selectedUidsLookup
 }
+
 
 export default {
   resources,
   activities,
   days,
-  resourceActivityDays: generateResourceActivityDays(),
+  resourceActivityDays,
+  activeStream: {
+    uid: activeStreamUid,
+    selectionModeOn: false,
+    selectedStreamDaysLookup: selectedStreamDaysLookup(),
+  }
 }
