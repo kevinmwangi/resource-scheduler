@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
+import _ from 'underscore'
 
 import ResourceActivityDay from './ResourceActivityDay'
 import dimensions from '../constants/dimensions'
@@ -14,32 +15,73 @@ const styles = {
     paddingBottom: dimensions.STREAM_SPACING,
     backgroundColor: 'none',
   },
-  active: {
-
-  },
-  inactive: {
-
-  },
-  stream: {
-  },
 }
 
 export default class ResourceActivityStream extends Component {
   static propTypes = {
     isActive: PropTypes.bool.isRequired,
     resourceActivityDays: PropTypes.object.isRequired,
-    selectionModeOn: PropTypes.bool.isRequired,
-    selectedStreamDaysLookup: PropTypes.object.isRequired,
     stream: PropTypes.object.isRequired,
+    updateStreamDaySelection: PropTypes.func.isRequired,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectionModeOn: false,
+      selectedDayUids: {},
+    }
+
+    this.startSelectingStreamDays = this.startSelectingStreamDays.bind(this)
+    this.selectStreamDay = this.selectStreamDay.bind(this)
+    this.stopSelectingStreamDays = this.stopSelectingStreamDays.bind(this)
+
+    const DEBOUNCE_TIME = 500
+    this.updateStreamDaySelection = _.debounce(
+      props.updateStreamDaySelection, DEBOUNCE_TIME
+    )
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (!nextProps.isActive && nextProps.isActive != this.state.isActive) {
+      this.state = {
+        selectionModeOn: false,
+        selectedDayUids: {},
+      }
+    }
+  }
+
+  startSelectingStreamDays(dayUid) {
+    const selectedDayUids = Object.assign({}, this.state.selectedDayUids)
+    selectedDayUids[dayUid] = !selectedDayUids[dayUid]
+    this.setState({
+      selectionModeOn: true,
+      selectedDayUids: selectedDayUids,
+    })
+  }
+
+  selectStreamDay(dayUid) {
+    if(this.state.selectionModeOn) {
+      const selectedDayUids = Object.assign({}, this.state.selectedDayUids)
+      selectedDayUids[dayUid] = !selectedDayUids[dayUid]
+      this.setState({selectedDayUids: selectedDayUids})
+    }
+  }
+
+  stopSelectingStreamDays() {
+    this.setState({selectionModeOn: false})
+    const selectedDays = this.props.stream.streamDays.filter((day) => {
+      return this.state.selectedDayUids[day.uid]
+    })
+    this.updateStreamDaySelection(selectedDays)
   }
 
   render() {
     const {
       isActive,
       resourceActivityDays,
-      selectionModeOn,
-      selectedStreamDaysLookup,
       stream,
+      updateStreamDaySelection,
     } = this.props
 
     const days = stream.streamDays.map((day) => {
@@ -49,8 +91,10 @@ export default class ResourceActivityStream extends Component {
           hours={day.hours}
           scheduled={day.scheduled}
           streamIsActive={isActive}
-          selectionModeOn={selectionModeOn}
-          isSelected={!!selectedStreamDaysLookup[day.uid]}
+          isSelected={!!this.state.selectedDayUids[day.uid]}
+          startSelectingStreamDays={isActive ? this.startSelectingStreamDays : undefined}
+          selectStreamDay={isActive ? this.selectStreamDay : undefined}
+          stopSelectingStreamDays={isActive ? this.stopSelectingStreamDays : undefined}
           uid={day.uid}
         />
       )
@@ -66,7 +110,11 @@ export default class ResourceActivityStream extends Component {
         <Paper
           zDepth={zDepth}
           rounded={false}
-          style={styles.stream}
+          onMouseLeave={() => {
+            if(this.state.selectionModeOn) {
+              this.stopSelectingStreamDays()
+            }
+          }}
           >
           {days}
         </Paper>

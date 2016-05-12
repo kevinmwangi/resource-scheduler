@@ -19,6 +19,7 @@ export default function Schedule (props) {
     newActivity, cancelNewActivity, createActivity,
     editActivity, cancelEditActivity, updateActivity,
     newStream, cancelNewStream, createStream,
+    updateStreamDaySelection,
     activeStream,
     activities,
     editing,

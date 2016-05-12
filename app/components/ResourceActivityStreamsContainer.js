@@ -26,10 +26,8 @@ export default function ResourceActivityStreamsContainer(props) {
     streamsGroupedByActivities,
     streamsGroupedByResources,
     viewGroupedBy,
+    updateStreamDaySelection,
   } = props
-
-  const selectionModeOn = activeStream.selectionModeOn
-
 
   const activityGroups = () => {
     const groupedStreams = streamsGroupedByActivities
@@ -45,15 +43,13 @@ export default function ResourceActivityStreamsContainer(props) {
 
       streamsGroupedByActivity.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid
-        const lookup = isActive ? activeStream.selectedStreamDaysLookup : {}
 
         list.push(
           <ResourceActivityStream
             key={stream.uid}
             isActive={isActive}
             resourceActivityDays={resourceActivityDays}
-            selectedStreamDaysLookup={lookup}
-            selectionModeOn={isActive && selectionModeOn}
+            updateStreamDaySelection={updateStreamDaySelection}
             stream={stream}
           />
         )
@@ -77,16 +73,14 @@ export default function ResourceActivityStreamsContainer(props) {
 
       streamsGroupedByResource.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid
-        const lookup = isActive ? activeStream.selectedStreamDaysLookup : {}
 
         list.push(
           <ResourceActivityStream
             key={stream.uid}
             isActive={isActive}
             resourceActivityDays={resourceActivityDays}
-            selectedStreamDaysLookup={lookup}
-            selectionModeOn={isActive && selectionModeOn}
             stream={stream}
+            updateStreamDaySelection={updateStreamDaySelection}
           />
         )
       })
@@ -120,4 +114,5 @@ ResourceActivityStreamsContainer.propTypes = {
   streamsGroupedByActivities: PropTypes.object.isRequired,
   streamsGroupedByResources: PropTypes.object.isRequired,
   viewGroupedBy: PropTypes.string.isRequired,
+  updateStreamDaySelection: PropTypes.func.isRequired,
 }

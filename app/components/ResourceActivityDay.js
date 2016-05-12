@@ -12,14 +12,39 @@ const styles = {
     width: dimensions.DAY_WIDTH - 2 * dimensions.BORDER_THICKNESS,
     height: height,
     borderWidth: dimensions.BORDER_THICKNESS,
-    borderTopWidth: dimensions.BORDER_THICKNESS,
-    borderBottomWidth: dimensions.BORDER_THICKNESS,
     marginTop: dimensions.BORDER_THICKNESS,
     marginBottom: dimensions.BORDER_THICKNESS,
     borderStyle: 'solid',
     borderColor: colors.canvasColor,
     verticalAlign: 'bottom',
-    overflowY: 'hidden',
+    overflow: 'hidden',
+    zIndex: 0,
+  },
+  containerStreamActive: {
+    pointerEvents: 'auto',
+    cursor: 'pointer',
+  },
+  containerStreamInactive: {
+    pointerEvents: 'none',
+    cursor: 'auto',
+  },
+  containerScheduled: {
+    backgroundColor: colors.scheduledColor,
+  },
+  constainerUnscheduled: {
+    backgroundColor: colors.streamColor,
+  },
+  containerSelected: {
+    borderWidth: 2 * dimensions.BORDER_THICKNESS,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: -dimensions.BORDER_THICKNESS,
+    marginRight: -dimensions.BORDER_THICKNESS,
+    borderColor: colors.accent1Color,
+    boxShadow: `inset 0px 3px 10px 0px  ${colors.dayInsetColor}`,
+    zIndex: 1,
+  },
+  constainerUnselected: {
     zIndex: 0,
   },
   textContainer: {
@@ -28,8 +53,13 @@ const styles = {
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    zIndex: 2,
+    zIndex: 4,
     pointerEvents: 'none',
+  },
+  textContainerSelected: {
+    boxShadow: 'none',
+    fontSize: '96%',
+    backgroundColor: colors.daySelectedColor,
   },
   text: {
     display: 'inline-flex',
@@ -37,45 +67,15 @@ const styles = {
     flex: '1 0 auto',
     pointerEvents: 'none',
   },
-  scheduled: {
-    backgroundColor: colors.scheduledColor,
-  },
-  unscheduled: {
-    backgroundColor: colors.streamColor,
-  },
   bar: {
     display: 'block',
     background: colors.barColor,
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    zIndex: 1,
-    pointerEvents: 'none',
-  },
-  overlay: {
-    position: 'absolute',
-    display: 'inline-flex',
-    alignItems: 'center',
-    height: '100%',
-    width: '100%',
     zIndex: 3,
-  },
-  overlaySelected: {
-    boxShadow: `inset 0px 4px 8px ${colors.dayInsetColor}`,
-    backgroundColor: colors.daySelectedColor,
-  },
-  overlayUnselected: {
-    boxShadow: 'none',
-  },
-  overlayStreamActive: {
-    pointerEvents: 'auto',
-    cursor: 'pointer',
-  },
-  overlayStreamInactive: {
     pointerEvents: 'none',
-    cursor: 'auto',
-  }
-
+  },
 }
 
 export default function ResourceActivityDay(props) {
@@ -83,16 +83,20 @@ export default function ResourceActivityDay(props) {
     scheduled,
     hours,
     isSelected,
-    selectionModeOn,
     streamIsActive,
     uid,
+    startSelectingStreamDays,
+    selectStreamDay,
+    stopSelectingStreamDays,
   } = props
 
   const hrsKnown = typeof hours == 'number'
   const containerStyles = Object.assign(
     {},
     styles.container,
-    scheduled ? styles.scheduled : styles.unscheduled
+    scheduled ? styles.containerScheduled : styles.constainerUnscheduled,
+    streamIsActive ? styles.containerStreamActive : styles.containerStreamInactive,
+    isSelected ? styles.containerSelected : styles.containerUnselected
   )
 
   const barStyles = Object.assign(
@@ -102,26 +106,28 @@ export default function ResourceActivityDay(props) {
     styles.bar
   )
 
-  const overlayStyles = Object.assign(
+  const textContainerStyles = Object.assign(
     {},
-    styles.overlay,
-    streamIsActive ? styles.overlayStreamActive : styles.overlayStreamInactive,
-    isSelected ? styles.overlaySelected : styles.overlayUnselected
+    styles.textContainer,
+    isSelected ? styles.textContainerSelected : {}
   )
 
   return (
     <div
       className="ResourceActivityDay"
-      style={containerStyles}>
-      <div style={styles.textContainer}>
+      style={containerStyles}
+      onMouseDown={(e) => {
+        e.preventDefault()
+        startSelectingStreamDays(uid)
+      }}
+      onMouseOver={() => selectStreamDay(uid)}
+      onMouseUp={stopSelectingStreamDays}
+      >
+      <div style={textContainerStyles}>
         <div style={styles.text}>
           {hrsKnown ? hours : ''}
         </div>
       </div>
-      <div
-        className="Overlay"
-        style={overlayStyles}
-      />
       <div style={barStyles}/>
     </div>
   )
@@ -132,5 +138,7 @@ ResourceActivityDay.propTypes = {
   isSelected: PropTypes.bool.isRequired,
   streamIsActive: PropTypes.bool.isRequired,
   uid: PropTypes.string.isRequired,
-  selectionModeOn: PropTypes.bool.isRequired,
+  startSelectingStreamDays: PropTypes.func,
+  selectStreamDay: PropTypes.func,
+  stopSelectingStreamDays: PropTypes.func,
 }
