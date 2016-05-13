@@ -63,7 +63,7 @@ export default function DialogForm(props) {
     />
   ]
 
-  const entiryForm = function () {
+  const entityForm = function () {
     switch (entityType) {
       case 'Resource':
         return <FormResource {...formProps} />
@@ -83,7 +83,7 @@ export default function DialogForm(props) {
       modal={true}
       open={isOpen}
     >
-      { entiryForm() }
+      { entityForm() }
     </Dialog>
   )
 }
