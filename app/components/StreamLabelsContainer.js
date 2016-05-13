@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import FlipMove from 'react-flip-move'
 import {List} from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
@@ -25,15 +25,16 @@ const styles = {
 
 export default function StreamLabelsContainer(props) {
   const {
-    streams,
-    resources,
-    activities,
-    viewGroupedBy,
     editResource,
     editActivity,
     changeActiveStream,
+    activeStream,
+    activities,
+    resources,
+    streamGrouping,
     streamsGroupedByActivities,
-    streamsGroupedByResources
+    streamsGroupedByResources,
+    viewGroupedBy,
   } = props
 
   const resourceAvatar = (
@@ -72,7 +73,7 @@ export default function StreamLabelsContainer(props) {
             key={stream.uid}
             uid={stream.uid}
             onTouchTap={changeActiveStream}
-            isActive={stream.uid == streams.active.uid}
+            isActive={stream.uid == activeStream.uid}
             label={resource.name || '-'}
             layoutStyles={styles.NestedListItem}
             avatar={resourceAvatar}
@@ -111,7 +112,7 @@ export default function StreamLabelsContainer(props) {
             key={stream.uid}
             uid={stream.uid}
             onTouchTap={changeActiveStream}
-            isActive={stream.uid == streams.active.uid}
+            isActive={stream.uid == activeStream.uid}
             label={activity.name || '-'}
             layoutStyles={styles.NestedListItem}
             avatar={activityAvatar}
@@ -138,4 +139,17 @@ export default function StreamLabelsContainer(props) {
       </FlipMove>
     </List>
   )
+}
+
+StreamLabelsContainer.propTypes = {
+  editResource: PropTypes.func.isRequired,
+  editActivity: PropTypes.func.isRequired,
+  changeActiveStream: PropTypes.func.isRequired,
+  activeStream: PropTypes.object.isRequired,
+  activities: PropTypes.object.isRequired,
+  resources: PropTypes.object.isRequired,
+  streamGrouping: PropTypes.string.isRequired,
+  streamsGroupedByActivities: PropTypes.object.isRequired,
+  streamsGroupedByResources: PropTypes.object.isRequired,
+  viewGroupedBy: PropTypes.string.isRequired,
 }

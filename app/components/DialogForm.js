@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton'
 
 import FormResource from './FormResource'
 import FormActivity from './FormActivity'
-import FormStream from './FormStream'
 
 const styles = {}
 
@@ -63,7 +62,7 @@ export default function DialogForm(props) {
     />
   ]
 
-  const entiryForm = function () {
+  const entityForm = function () {
     switch (entityType) {
       case 'Resource':
         return <FormResource {...formProps} />
@@ -83,7 +82,7 @@ export default function DialogForm(props) {
       modal={true}
       open={isOpen}
     >
-      { entiryForm() }
+      { entityForm() }
     </Dialog>
   )
 }

@@ -1,5 +1,6 @@
 import {
   darkBlack,
+  fullBlack,
 } from 'material-ui/styles/colors'
 
 import { fade } from 'material-ui/utils/colorManipulator'
@@ -12,5 +13,6 @@ export default Object.assign({
   weekendDayColor: fade(darkBlack, 0.2),
   streamColor: fade(darkBlack, 0.06),
   streamLabelActiveColor: palette.accent1Color,
-  streamActiveColor: fade(palette.accent1Color, 0.2),
+  daySelectedColor: fade(palette.accent1Color, 0.2),
+  dayInsetColor: fade(fullBlack, 0.3),
 }, palette)

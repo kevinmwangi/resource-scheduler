@@ -68,7 +68,7 @@ export default function ScheduleTable (props) {
           <Paper zDepth={1} rounded={false} style={styles.topLeftCorner} >
 
             <ViewSwitcher
-              viewGroupedBy={props.streams.grouping}
+              viewGroupedBy={props.streamGrouping}
               onViewGroupChange={props.regroupStreams}
             />
 
@@ -90,7 +90,9 @@ export default function ScheduleTable (props) {
             <Paper zDepth={2} rounded={false} style={styles.streamLabels}>
 
               <StreamLabelsContainer
-                {...props} viewGroupedBy={props.streams.grouping}/>
+                {...props}
+                viewGroupedBy={props.streamGrouping}
+              />
 
             </Paper>
 
@@ -99,7 +101,9 @@ export default function ScheduleTable (props) {
               onScroll={onScrollStreams} >
 
               <ResourceActivityStreamsContainer
-                 {...props} viewGroupedBy={props.streams.grouping} />
+                {...props}
+                viewGroupedBy={props.streamGrouping}
+              />
 
             </div>
           </div>
@@ -110,11 +114,12 @@ export default function ScheduleTable (props) {
 }
 
 ScheduleTable.propTypes = {
+  activeStream: PropTypes.object.isRequired,
   activities: PropTypes.object.isRequired,
   days: PropTypes.array.isRequired,
-  resources: PropTypes.object.isRequired,
   resourceActivityDays: PropTypes.object.isRequired,
-  streams: PropTypes.object.isRequired,
+  resources: PropTypes.object.isRequired,
   streamsGroupedByActivities: PropTypes.object.isRequired,
   streamsGroupedByResources: PropTypes.object.isRequired,
+  streamGrouping: PropTypes.string.isRequired,
 }

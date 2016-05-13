@@ -3,18 +3,17 @@ import actionType from '../../constants/actionTypes'
 const initialState = {}
 
 export default function (state = initialState, action) {
-
-  switch(action.type) {
+  switch (action.type) {
+    case actionType.CHANGE_ACTIVE_STREAM:
+      return {} // clear any currently selected stream days
 
     case actionType.UPDATE_STREAM_DAY_SELECTION:
-      let selections = {}
-      action.data.selectedStreamDays.forEach((day) => {
-        selections[day.uid] = day
-      })
-      return Object.assign({}, selections, state)
+      let newState = {}
+      action.data.selectedStreamDays.forEach((day) => newState[day.uid] = true)
+      return newState
 
     case actionType.UPDATE_STREAM_DAYS_SUCCEEDED:
-      return Object.assign({}, state, action.data.updatedStreamDays)
+      return {}
 
     default:
       return state

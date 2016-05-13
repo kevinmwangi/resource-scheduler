@@ -5,7 +5,7 @@
 
 export {default as createResourceSucceeded} from './createResourceSucceeded'
 export {default as createActivitySucceeded} from './createActivitySucceeded'
-export {default as createStreamSucceeded} from './createStreamSucceeded'
 
 export {default as updateResourceSucceeded} from './updateResourceSucceeded'
 export {default as updateActivitySucceeded} from './updateActivitySucceeded'
+export {default as updateStreamDaysSucceeded} from './updateStreamDaysSucceeded'

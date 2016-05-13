@@ -54,8 +54,7 @@ function generateSingleResourceActivityDay (resource_id, activity_id, idCounter,
   }
 }
 
-function generateResourceActivityDays () {
-  let uids = []
+const resourceActivityDays = (function generateResourceActivityDays () {
   let lookup = {}
   let idCounter = 0
 
@@ -77,7 +76,6 @@ function generateResourceActivityDays () {
               resource_id, activity_id, idCounter, day, dayToBeWorked, dayToBeScheduled
             )
 
-            uids.push(scheduledDay.uid)
             lookup[scheduledDay.uid] = scheduledDay
           }
         })
@@ -86,14 +84,13 @@ function generateResourceActivityDays () {
   })
 
   return {
-    uids,
     lookup,
   }
-}
+})()
 
 export default {
   resources,
   activities,
   days,
-  resourceActivityDays: generateResourceActivityDays(),
+  resourceActivityDays,
 }

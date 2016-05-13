@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import ScheduleTable from '../components/ScheduleTable'
 import DialogForm from '../components/DialogForm'
+import StreamDaysEditor from '../components/StreamDaysEditor'
 
 const styles = {
   Schedule: {
@@ -18,13 +19,17 @@ export default function Schedule (props) {
     editResource, cancelEditResource, updateResource,
     newActivity, cancelNewActivity, createActivity,
     editActivity, cancelEditActivity, updateActivity,
-    newStream, cancelNewStream, createStream,
-    editing,
-    streams,
-    resources,
+    updateStreamDaySelection,
+    updateStreamDays,
+
+    activeStream,
     activities,
+    editing,
+    resources,
+    selectedStreamDays,
     streamsGroupedByActivities,
-    streamsGroupedByResources
+    streamsGroupedByResources,
+    streamGrouping,
   } = props
 
   return (
@@ -52,15 +57,9 @@ export default function Schedule (props) {
         entityType='Activity'
       />
 
-      <DialogForm
-        newEntity={editing.stream}
-        existingEntity={null}
-        onCancelNew={cancelNewStream}
-        onCreate={createStream}
-        onCancelEdit={() => {}}
-        onUpdate={() => {}}
-        formId='formStream'
-        entityType='Stream'
+      <StreamDaysEditor
+        activeStream={activeStream}
+        updateStreamDays={updateStreamDays}
       />
 
       <ScheduleTable

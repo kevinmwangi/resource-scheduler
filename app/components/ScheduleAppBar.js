@@ -16,7 +16,6 @@ export default function ScheduleAppBar (props) {
     layoutStyles,
     newResource,
     newActivity,
-    newStream,
   } = props
 
   const handleMenuSelection = (event, menuItem) => {
@@ -26,9 +25,6 @@ export default function ScheduleAppBar (props) {
         break;
       case 'activity':
         newActivity()
-        break;
-      case 'stream':
-        newStream()
         break;
       default:
     }
@@ -53,7 +49,6 @@ export default function ScheduleAppBar (props) {
           >
           <MenuItem key={'resource'} primaryText='New Resource'/>
           <MenuItem key={'activity'} primaryText='New Activity' />
-          <MenuItem key={'stream'} primaryText='New Stream' />
         </IconMenu>
 
       }
@@ -66,5 +61,4 @@ ScheduleAppBar.propTypes = {
   layoutStyles: PropTypes.object.isRequired,
   newResource: PropTypes.func.isRequired,
   newActivity: PropTypes.func.isRequired,
-  newStream: PropTypes.func.isRequired,
 }

@@ -6,6 +6,7 @@ import * as actionCreators from '../actionCreators'
 import Schedule from '../components/Schedule'
 import ScheduleAppBar from '../components/ScheduleAppBar'
 import getGroupedStreams from '../selectors/getGroupedStreams'
+import getSelectedStreamDays from '../selectors/getSelectedStreamDays'
 
 const styles = {
   ScheduleApp: {
@@ -29,12 +30,14 @@ class ScheduleApp extends Component {
 
 function mapStateToProps(state) {
   return Object.assign({
+    activeStream: state.activeStream,
     activities: state.activities,
     days: state.days,
-    resources: state.resources,
-    resourceActivityDays: state.resourceActivityDays,
     editing: state.editing,
-    streams: state.streams,
+    resourceActivityDays: state.resourceActivityDays,
+    resources: state.resources,
+    streamGrouping: state.streamGrouping,
+    selectedStreamDays: getSelectedStreamDays(state),
   }, getGroupedStreams(state))
 }
 
