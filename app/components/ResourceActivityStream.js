@@ -44,10 +44,17 @@ export default class ResourceActivityStream extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if (!nextProps.isActive && nextProps.isActive != this.state.isActive) {
+    const nowInactive = !nextProps.isActive
+    const wasActive = this.state.isActive
+    const justDeactivated = nowInactive && wasActive
+
+    const noSelections = !Object.keys(nextProps.selectedStreamDaysLookup).length
+    const wereSelections = !!Object.keys(this.state.selectedStreamDaysLookup).length
+    const selectionCleared = noSelections && wereSelections
+
+    if (justDeactivated || selectionCleared) {
       this.state = {
         selectionModeOn: false,
-        selectedDayUids: {},
         selectedStreamDaysLookup: {},
       }
     }

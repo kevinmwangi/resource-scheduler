@@ -12,6 +12,9 @@ export default function (state = initialState, action) {
       action.data.selectedStreamDays.forEach((day) => newState[day.uid] = true)
       return newState
 
+    case actionType.UPDATE_STREAM_DAYS_SUCCEEDED:
+      return {}
+
     default:
       return state
   }
