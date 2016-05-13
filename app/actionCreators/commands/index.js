@@ -27,3 +27,4 @@ export {default as regroupStreams} from './regroupStreams'
 export {default as changeActiveStream} from './changeActiveStream'
 
 export {default as updateStreamDaySelection} from './updateStreamDaySelection'
+export {default as updateStreamDays} from './updateStreamDays'

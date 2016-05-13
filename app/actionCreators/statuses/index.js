@@ -9,3 +9,4 @@ export {default as creatingStream} from './creatingStream'
 
 export {default as updatingActivity} from './updatingActivity'
 export {default as updatingResource} from './updatingResource'
+export {default as updatingStreamDays} from './updatingStreamDays'
