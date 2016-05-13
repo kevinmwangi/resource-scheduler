@@ -19,7 +19,6 @@ export default function Schedule (props) {
     editResource, cancelEditResource, updateResource,
     newActivity, cancelNewActivity, createActivity,
     editActivity, cancelEditActivity, updateActivity,
-    newStream, cancelNewStream, createStream,
     updateStreamDaySelection,
     updateStreamDays,
 
@@ -56,17 +55,6 @@ export default function Schedule (props) {
         onUpdate={updateActivity}
         formId='formActivity'
         entityType='Activity'
-      />
-
-      <DialogForm
-        newEntity={editing.stream}
-        existingEntity={null}
-        onCancelNew={cancelNewStream}
-        onCreate={createStream}
-        onCancelEdit={() => {}}
-        onUpdate={() => {}}
-        formId='formStream'
-        entityType='Stream'
       />
 
       <StreamDaysEditor

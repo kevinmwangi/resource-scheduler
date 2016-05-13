@@ -19,10 +19,6 @@ export {default as updateActivity} from './updateActivity'
 export {default as editActivity} from './editActivity'
 export {default as cancelEditActivity} from './cancelEditActivity'
 
-export {default as createStream} from './createStream'
-export {default as newStream} from './newStream'
-export {default as cancelNewStream} from './cancelNewStream'
-
 export {default as regroupStreams} from './regroupStreams'
 export {default as changeActiveStream} from './changeActiveStream'
 

@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton'
 
 import FormResource from './FormResource'
 import FormActivity from './FormActivity'
-import FormStream from './FormStream'
 
 const styles = {}
 
