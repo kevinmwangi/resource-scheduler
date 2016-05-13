@@ -13,6 +13,9 @@ export default function (state = initialState, action) {
       })
       return Object.assign({}, selections, state)
 
+    case actionType.UPDATE_STREAM_DAYS_SUCCEEDED:
+      return Object.assign({}, state, action.data.updatedStreamDays)
+
     default:
       return state
   }

@@ -1,10 +1,10 @@
 import action from '../../constants/actionTypes'
 
-export default function (streamDays) {
+export default function (updatedStreamDays) {
   return {
     type: action.UPDATE_STREAM_DAYS_SUCCEEDED,
     data: {
-      streamDays,
+      updatedStreamDays,
     }
   }
 }

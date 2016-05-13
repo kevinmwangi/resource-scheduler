@@ -23,13 +23,14 @@ export default class ResourceActivityStream extends Component {
     resourceActivityDays: PropTypes.object.isRequired,
     stream: PropTypes.object.isRequired,
     updateStreamDaySelection: PropTypes.func.isRequired,
+    selectedStreamDaysLookup: PropTypes.object.isRequired,
   }
 
   constructor(props) {
     super(props)
     this.state = {
       selectionModeOn: false,
-      selectedDayUids: {},
+      selectedStreamDaysLookup: {},
     }
 
     this.startSelectingStreamDays = this.startSelectingStreamDays.bind(this)
@@ -47,31 +48,38 @@ export default class ResourceActivityStream extends Component {
       this.state = {
         selectionModeOn: false,
         selectedDayUids: {},
+        selectedStreamDaysLookup: {},
       }
     }
   }
 
   startSelectingStreamDays(dayUid) {
-    const selectedDayUids = Object.assign({}, this.state.selectedDayUids)
-    selectedDayUids[dayUid] = !selectedDayUids[dayUid]
+    const selectedStreamDaysLookup = Object.assign(
+      {}, this.state.selectedStreamDaysLookup
+    )
+
+    selectedStreamDaysLookup[dayUid] = !selectedStreamDaysLookup[dayUid]
     this.setState({
       selectionModeOn: true,
-      selectedDayUids: selectedDayUids,
+      selectedStreamDaysLookup: selectedStreamDaysLookup,
     })
   }
 
   selectStreamDay(dayUid) {
     if(this.state.selectionModeOn) {
-      const selectedDayUids = Object.assign({}, this.state.selectedDayUids)
-      selectedDayUids[dayUid] = !selectedDayUids[dayUid]
-      this.setState({selectedDayUids: selectedDayUids})
+      const selectedStreamDaysLookup = Object.assign(
+        {}, this.state.selectedStreamDaysLookup
+      )
+
+      selectedStreamDaysLookup[dayUid] = !selectedStreamDaysLookup[dayUid]
+      this.setState({selectedStreamDaysLookup: selectedStreamDaysLookup})
     }
   }
 
   stopSelectingStreamDays() {
     this.setState({selectionModeOn: false})
     const selectedDays = this.props.stream.streamDays.filter((day) => {
-      return this.state.selectedDayUids[day.uid]
+      return this.state.selectedStreamDaysLookup[day.uid]
     })
     this.updateStreamDaySelection(selectedDays)
   }
@@ -91,7 +99,7 @@ export default class ResourceActivityStream extends Component {
           hours={day.hours}
           scheduled={day.scheduled}
           streamIsActive={isActive}
-          isSelected={!!this.state.selectedDayUids[day.uid]}
+          isSelected={!!this.state.selectedStreamDaysLookup[day.uid]}
           startSelectingStreamDays={isActive ? this.startSelectingStreamDays : undefined}
           selectStreamDay={isActive ? this.selectStreamDay : undefined}
           stopSelectingStreamDays={isActive ? this.stopSelectingStreamDays : undefined}

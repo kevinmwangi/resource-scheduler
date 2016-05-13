@@ -49,8 +49,9 @@ export default function ResourceActivityStreamsContainer(props) {
             key={stream.uid}
             isActive={isActive}
             resourceActivityDays={resourceActivityDays}
-            updateStreamDaySelection={updateStreamDaySelection}
+            selectedStreamDaysLookup={activeStream.selectedStreamDaysLookup}
             stream={stream}
+            updateStreamDaySelection={updateStreamDaySelection}
           />
         )
       })
@@ -79,6 +80,7 @@ export default function ResourceActivityStreamsContainer(props) {
             key={stream.uid}
             isActive={isActive}
             resourceActivityDays={resourceActivityDays}
+            selectedStreamDaysLookup={activeStream.selectedStreamDaysLookup}
             stream={stream}
             updateStreamDaySelection={updateStreamDaySelection}
           />

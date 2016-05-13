@@ -86,4 +86,52 @@ describe('reducer: resources.lookup', function() {
       expect(lookup(state, action)).toEqual(expected)
     })
   })
+
+
+  describe(actionType.UPDATE_STREAM_DAYS_SUCCEEDED, function() {
+    it('updates the relevant days', function() {
+      const day1Updated = {
+        activity_id: 1,
+        day: "2016-03-20",
+        hours: 5,
+        id: 1,
+        resource_id: 2,
+        scheduled: true,
+        uid: "2016-04-20:2:1",
+      }
+
+      const newDay = {
+        activity_id: 3,
+        day: "2016-05-07",
+        hours: undefined,
+        id: 3,
+        resource_id: 3,
+        scheduled: true,
+        uid: "2016-05-07:3:3",
+      }
+
+      const state = {
+        [day1.uid]: day1,
+        [day2.uid]: day2,
+      }
+
+      const action = {
+        type: actionType.UPDATE_STREAM_DAYS_SUCCEEDED,
+        data: {
+          updatedStreamDays: {
+            [day1Updated.uid]: day1Updated,
+            [newDay.uid]: newDay,
+          }
+        }
+      }
+
+      const expected = {
+        [day1Updated.uid]: day1Updated,
+        [day2.uid]: day2,
+        [newDay.uid]: newDay,
+      }
+
+      expect(lookup(state, action)).toEqual(expected)
+    })
+  })
 })
