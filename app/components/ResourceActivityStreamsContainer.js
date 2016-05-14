@@ -64,7 +64,7 @@ export default function ResourceActivityStreamsContainer(props) {
       })
 
       list.push(
-        <div key={`blank-${activity_id}`} style={styles.blankStream} />
+        <div key={`blankActivity-${activity_id}`} style={styles.blankStream} />
       )
 
       list.push(<StatefulDivider key={`d${activity_id}`} />)
@@ -103,7 +103,7 @@ export default function ResourceActivityStreamsContainer(props) {
       })
 
       list.push(
-        <div key={`blank-${resource_id}`} style={styles.blankStream} />
+        <div key={`blankResource-${resource_id}`} style={styles.blankStream} />
       )
 
       list.push(<StatefulDivider key={`d${resource_id}`} />)

@@ -90,7 +90,7 @@ export default function StreamLabelsContainer(props) {
 
       list.push(
         <StreamAdder
-          key={`streamAdder-${activity_id}`}
+          key={`streamAdderActivities-${activity_id}`}
           hintText="Add Resource"
           onAdd={() => {}}
           layoutStyles={styles.StreamAdder}
@@ -141,7 +141,7 @@ export default function StreamLabelsContainer(props) {
 
       list.push(
         <StreamAdder
-          key={`streamAdder-${resource_id}`}
+          key={`streamAdderResources-${resource_id}`}
           hintText="Add Activity"
           onAdd={() => {}}
           layoutStyles={styles.StreamAdder}
