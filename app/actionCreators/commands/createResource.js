@@ -9,7 +9,7 @@ export default function (resource) {
 
     // Temporarily generate ids until database added
     const { resources } = getState()
-    const pseudoId = Math.max(...resources.ids) + 1
+    const pseudoId = Math.max(...resources.ids, 0) + 1
     const resourceWithId = Object.assign({}, resource, {id: pseudoId})
 
     dispatch(createResourceSucceeded(resourceWithId))

@@ -9,7 +9,7 @@ export default function (activity, more) {
 
     // Temporarily generate ids until database added
     const { activities } = getState()
-    const pseudoId = Math.max(...activities.ids) + 1
+    const pseudoId = Math.max(...activities.ids, 0) + 1
     const activityWithId = Object.assign({}, activity, {id: pseudoId})
 
     dispatch(createActivitySucceeded(activityWithId))
