@@ -7,7 +7,7 @@ import colors from '../constants/colors'
 
 const styles = {
   Drawer: {
-    height: 'auto',
+    height: 300,
     bottom: 0,
     top: undefined,
   },
