@@ -9,6 +9,7 @@ import animations from './../constants/animations'
 const styles = {
   List: {
     paddingTop: 0,
+    paddingBottom: dimensions.SCHEDULE_BOTTOM_PADDING,
     display: 'inline-flex',
   },
   groupStream: {
