@@ -19,8 +19,8 @@ const styles = {
     paddingLeft: 0,
   },
   NestedListItem: {
-    paddingLeft: 42,
-  }
+    paddingLeft: dimensions.STREAM_LABEL_INDENT,
+  },
 }
 
 export default function StreamLabelsContainer(props) {
