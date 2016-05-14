@@ -8,8 +8,8 @@ import { fade } from 'material-ui/utils/colorManipulator'
 import { palette } from '../themes/customLightTheme'
 
 export default Object.assign({
-  scheduledColor: fade(palette.primary1Color, 0.4),
-  barColor: fade(palette.primary1Color, 0.9),
+  scheduledColor: fade(palette.primary1Color, 0.35),
+  barColor: fade(palette.primary1Color, 0.7),
   weekendDayColor: fade(darkBlack, 0.2),
   streamColor: fade(darkBlack, 0.06),
   streamLabelActiveColor: palette.accent1Color,
