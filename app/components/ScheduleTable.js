@@ -5,7 +5,7 @@ import ResourceActivityStream from './ResourceActivityStream'
 import StreamLabelsContainer from './StreamLabelsContainer'
 import TimeStream from './TimeStream'
 import ResourceActivityStreamsContainer from './ResourceActivityStreamsContainer'
-import Dimensions from '../constants/dimensions'
+import dimensions from '../constants/dimensions'
 import ViewSwitcher from '../components/ViewSwitcher'
 
 const styles = {
@@ -42,15 +42,24 @@ const styles = {
     display: 'flex',
   },
   topLeftCorner: {
-    width: Dimensions.STREAM_LABEL_WIDTH,
+    width: dimensions.STREAM_LABEL_WIDTH,
     flex: '0 0 auto',
+    display: 'flex',
+    flexDirection: 'row',
+    paddingLeft: dimensions.desktopGutterLess,
     zIndex: 3,
-    height: Dimensions.STREAM_CONTAINER_HEIGHT,
+    height: dimensions.STREAM_CONTAINER_HEIGHT,
   },
   streamLabels: {
     flex: 'none',
-    width: Dimensions.STREAM_LABEL_WIDTH,
+    width: dimensions.STREAM_LABEL_WIDTH,
     zIndex: 2,
+  },
+  dateControls: {
+    flex: 'none',
+    width: 56,
+    marginLeft: dimensions.desktopGutterLess,
+    height: '100%',
   },
 }
 
@@ -70,7 +79,10 @@ export default function ScheduleTable (props) {
             <ViewSwitcher
               viewGroupedBy={props.streamGrouping}
               onViewGroupChange={props.regroupStreams}
+              layoutStyles={{flex: '1 1 auto', height: '100%'}}
             />
+
+            <div style={styles.dateControls} />
 
           </Paper>
 
