@@ -48,7 +48,7 @@ const styles = {
     flexDirection: 'row',
     paddingLeft: dimensions.desktopGutterLess,
     zIndex: 3,
-    height: dimensions.STREAM_CONTAINER_HEIGHT,
+    height: dimensions.STREAM_CHANNEL_HEIGHT,
   },
   streamLabels: {
     flex: 'none',

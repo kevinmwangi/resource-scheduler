@@ -13,7 +13,7 @@ const styles = {
     display: 'inline-flex',
   },
   groupStream: {
-    height: dimensions.STREAM_CONTAINER_HEIGHT,
+    height: dimensions.STREAM_CHANNEL_HEIGHT,
     width: '100%',
   },
 }
@@ -38,7 +38,7 @@ export default function ResourceActivityStreamsContainer(props) {
       const activity = activities.lookup[activity_id]
       const streamsGroupedByActivity = groupedStreams[activity_id] || []
 
-      list.push(<div key={`r${activity_id}`} style={{height: dimensions.STREAM_CONTAINER_HEIGHT}} />)
+      list.push(<div key={`r${activity_id}`} style={styles.groupStream} />)
 
       streamsGroupedByActivity.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid

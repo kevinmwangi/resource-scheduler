@@ -13,10 +13,6 @@ const blankDay = (resource_id, activity_id, day) => {
   }
 }
 
-const blankDaysStream = (resource_id, activity_id, days) => {
-  return days.map((day) => blankDay(resource_id, activity_id, day))
-}
-
 const getResources = (state) => state.resources
 const getActivities = (state) => state.activities
 const getDays = (state) => state.days
@@ -56,7 +52,7 @@ const getGroupedStreams = createSelector(
             }
           })
         } else {
-          streamDays = blankDaysStream(resource_id, activity_id, days)
+          streamDays = []
           spareStream = true
         }
 

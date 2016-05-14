@@ -9,11 +9,13 @@ import colors from '../constants/colors'
 
 const styles = {
   channel: {
+    backgroundColor: 'none',
+    display: 'block',
     whiteSpace: 'nowrap',
-    display: 'inline-block',
+    height: dimensions.STREAM_HEIGHT,
+    width: '100%',
     paddingTop: dimensions.STREAM_SPACING,
     paddingBottom: dimensions.STREAM_SPACING,
-    backgroundColor: 'none',
   },
 }
 
@@ -125,6 +127,7 @@ export default class ResourceActivityStream extends Component {
         <Paper
           zDepth={zDepth}
           rounded={false}
+          style={styles.stream}
           onMouseLeave={() => {
             if(this.state.selectionModeOn) {
               this.stopSelectingStreamDays()

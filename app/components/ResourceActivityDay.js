@@ -3,14 +3,12 @@ import React, { PropTypes } from 'react'
 import dimensions from '../constants/dimensions'
 import colors from '../constants/colors'
 
-const height = dimensions.STREAM_HEIGHT - 4 * dimensions.BORDER_THICKNESS
-
 const styles = {
   container: {
     display: 'inline-block',
     position: 'relative',
-    width: dimensions.DAY_WIDTH - 2 * dimensions.BORDER_THICKNESS,
-    height: height,
+    width: dimensions.DAY_INNER_WIDTH,
+    height: dimensions.STREAM_INNER_HEIGHT,
     borderWidth: dimensions.BORDER_THICKNESS,
     marginTop: dimensions.BORDER_THICKNESS,
     marginBottom: dimensions.BORDER_THICKNESS,
