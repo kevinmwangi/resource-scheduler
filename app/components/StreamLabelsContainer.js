@@ -54,8 +54,6 @@ export default function StreamLabelsContainer(props) {
       const activity = activities.lookup[activity_id]
       const streamsGroupedByActivity = groupedStreams[activity_id] || []
 
-      list.push(<StatefulDivider key={`d${activity_id}`} />)
-
       list.push(
         <StreamLabelGroup
           key={`a${activity_id}`}
@@ -80,6 +78,8 @@ export default function StreamLabelsContainer(props) {
           />
         )
       })
+
+      list.push(<StatefulDivider key={`d${activity_id}`} />)
     })
 
     return list
@@ -92,8 +92,6 @@ export default function StreamLabelsContainer(props) {
     resources.ids.forEach((resource_id) => {
       const resource = resources.lookup[resource_id]
       const streamsGroupedByResource = groupedStreams[resource_id] || []
-
-      list.push(<StatefulDivider key={`d${resource_id}`} />)
 
       list.push(
         <StreamLabelGroup
@@ -119,6 +117,8 @@ export default function StreamLabelsContainer(props) {
           />
         )
       })
+
+      list.push(<StatefulDivider key={`d${resource_id}`} />)
     })
 
     return list

@@ -38,8 +38,6 @@ export default function ResourceActivityStreamsContainer(props) {
       const activity = activities.lookup[activity_id]
       const streamsGroupedByActivity = groupedStreams[activity_id] || []
 
-      list.push(<StatefulDivider key={`d${activity_id}`} />)
-
       list.push(<div key={`r${activity_id}`} style={{height: dimensions.STREAM_CONTAINER_HEIGHT}} />)
 
       streamsGroupedByActivity.forEach((stream) => {
@@ -56,6 +54,8 @@ export default function ResourceActivityStreamsContainer(props) {
           />
         )
       })
+
+      list.push(<StatefulDivider key={`d${activity_id}`} />)
     })
 
     return list
@@ -68,8 +68,6 @@ export default function ResourceActivityStreamsContainer(props) {
     resources.ids.forEach((resource_id) => {
       const resource = resources.lookup[resource_id]
       const streamsGroupedByResource = groupedStreams[resource_id] || []
-
-      list.push(<StatefulDivider key={`d${resource_id}`} />)
 
       list.push(<div key={`r${resource_id}`} style={styles.groupStream} />)
 
@@ -87,6 +85,8 @@ export default function ResourceActivityStreamsContainer(props) {
           />
         )
       })
+
+      list.push(<StatefulDivider key={`d${resource_id}`} />)
     })
 
     return list
