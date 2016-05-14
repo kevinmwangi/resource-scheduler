@@ -7,6 +7,7 @@ import FontIcon from 'material-ui/FontIcon'
 import StatefulDivider from './StatefulDivider'
 import StreamLabelGroup from './StreamLabelGroup'
 import StreamLabel from './StreamLabel'
+import StreamAdder from './StreamAdder'
 import dimensions from './../constants/dimensions'
 import animations from './../constants/animations'
 
@@ -20,6 +21,12 @@ const styles = {
   },
   NestedListItem: {
     paddingLeft: dimensions.STREAM_LABEL_INDENT,
+  },
+  StreamAdder: {
+    marginLeft: dimensions.STREAM_LABEL_INDENT + dimensions.desktopGutterLess,
+    marginRight: dimensions.desktopGutterLess,
+    height: dimensions.STREAM_CHANNEL_HEIGHT,
+    display: 'block',
   },
 }
 
@@ -52,7 +59,7 @@ export default function StreamLabelsContainer(props) {
 
     activities.ids.forEach((activity_id) => {
       const activity = activities.lookup[activity_id]
-      const streamsGroupedByActivity = groupedStreams[activity_id] || []
+      const activityStreams = groupedStreams[activity_id] || []
 
       list.push(
         <StreamLabelGroup
@@ -64,20 +71,32 @@ export default function StreamLabelsContainer(props) {
         />
       )
 
-      streamsGroupedByActivity.forEach((stream) => {
-        const resource = resources.lookup[stream.resource_id] || {}
-        list.push(
-          <StreamLabel
-            key={stream.uid}
-            uid={stream.uid}
-            onTouchTap={changeActiveStream}
-            isActive={stream.uid == activeStream.uid}
-            label={resource.name || '-'}
-            layoutStyles={styles.NestedListItem}
-            avatar={resourceAvatar}
-          />
-        )
+      activityStreams.forEach((stream) => {
+        if (stream.hasWorkedOrScheduledDays) {
+          const resource = resources.lookup[stream.resource_id]
+          list.push(
+            <StreamLabel
+              key={stream.uid}
+              uid={stream.uid}
+              onTouchTap={changeActiveStream}
+              isActive={stream.uid == activeStream.uid}
+              label={resource.name}
+              layoutStyles={styles.NestedListItem}
+              avatar={resourceAvatar}
+            />
+          )
+        }
       })
+
+      list.push(
+        <StreamAdder
+          key={`streamAdder-${activity_id}`}
+          hintText="Add Resource"
+          onAdd={() => {}}
+          layoutStyles={styles.StreamAdder}
+          streamCollection={activityStreams}
+        />
+      )
 
       list.push(<StatefulDivider key={`d${activity_id}`} />)
     })
@@ -91,7 +110,7 @@ export default function StreamLabelsContainer(props) {
 
     resources.ids.forEach((resource_id) => {
       const resource = resources.lookup[resource_id]
-      const streamsGroupedByResource = groupedStreams[resource_id] || []
+      const resourceStreams = groupedStreams[resource_id] || []
 
       list.push(
         <StreamLabelGroup
@@ -103,20 +122,32 @@ export default function StreamLabelsContainer(props) {
         />
       )
 
-      streamsGroupedByResource.forEach((stream) => {
-        const activity = activities.lookup[stream.activity_id] || {}
-        list.push(
-          <StreamLabel
-            key={stream.uid}
-            uid={stream.uid}
-            onTouchTap={changeActiveStream}
-            isActive={stream.uid == activeStream.uid}
-            label={activity.name || '-'}
-            layoutStyles={styles.NestedListItem}
-            avatar={activityAvatar}
-          />
-        )
+      resourceStreams.forEach((stream) => {
+        if (stream.hasWorkedOrScheduledDays) {
+          const activity = activities.lookup[stream.activity_id]
+          list.push(
+            <StreamLabel
+              key={stream.uid}
+              uid={stream.uid}
+              onTouchTap={changeActiveStream}
+              isActive={stream.uid == activeStream.uid}
+              label={activity.name}
+              layoutStyles={styles.NestedListItem}
+              avatar={activityAvatar}
+            />
+          )
+        }
       })
+
+      list.push(
+        <StreamAdder
+          key={`streamAdder-${resource_id}`}
+          hintText="Add Activity"
+          onAdd={() => {}}
+          layoutStyles={styles.StreamAdder}
+          streamCollection={resourceStreams}
+        />
+      )
 
       list.push(<StatefulDivider key={`d${resource_id}`} />)
     })

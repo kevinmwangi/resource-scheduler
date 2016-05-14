@@ -31,48 +31,40 @@ const getGroupedStreams = createSelector(
     let groupedByActivity = {}
     let groupedByResource = {}
 
-    const resourceIds = [...resources.ids, undefined]
-    const activityIds = [...activities.ids, undefined]
-
-    resourceIds.forEach((resource_id) => {
-      activityIds.forEach((activity_id) => {
+    resources.ids.forEach((resource_id) => {
+      activities.ids.forEach((activity_id) => {
         let streamDays = []
-        let workedOrScheduledDays = false
-        let spareStream = false
+        let hasWorkedOrScheduledDays = false
+        const resource = resources.lookup[resource_id]
+        const activity = activities.lookup[activity_id]
 
-        if (resource_id && activity_id) {
-          days.forEach((day) => {
-            const key = `${day}:${resource_id}:${activity_id}`
-            const resourceActivityDay = resourceActivityDayLookup[key]
-            if (resourceActivityDay) {
-              streamDays.push(resourceActivityDay)
-              workedOrScheduledDays = workedOrScheduledDays || true
-            } else {
-              streamDays.push(blankDay(resource_id, activity_id, day))
-            }
-          })
-        } else {
-          streamDays = []
-          spareStream = true
+        days.forEach((day) => {
+          const key = `${day}:${resource_id}:${activity_id}`
+          const resourceActivityDay = resourceActivityDayLookup[key]
+          if (resourceActivityDay) {
+            streamDays.push(resourceActivityDay)
+            hasWorkedOrScheduledDays = hasWorkedOrScheduledDays || true
+          } else {
+            streamDays.push(blankDay(resource_id, activity_id, day))
+          }
+        })
+
+        let stream = {
+          streamDays,
+          activity_id,
+          resource_id,
+          hasWorkedOrScheduledDays,
+          uid: `${resource_id}:${activity_id}`,
         }
 
-        if (workedOrScheduledDays || spareStream) {
-          const stream = {
-            streamDays,
-            activity_id,
-            resource_id,
-            uid: `${resource_id}:${activity_id}`,
-          }
+        groupedByActivity[activity_id] = groupedByActivity[activity_id] || []
+        stream.label = resource ? resource.name : ''
+        groupedByActivity[activity_id].push(stream)
 
-          if (activity_id) {
-            groupedByActivity[activity_id] = groupedByActivity[activity_id] || []
-            groupedByActivity[activity_id].push(stream)
-          }
-          if (resource_id) {
-            groupedByResource[resource_id] = groupedByResource[resource_id] || []
-            groupedByResource[resource_id].push(stream)
-          }
-        }
+        groupedByResource[resource_id] = groupedByResource[resource_id] || []
+        stream.label = activity ? activity.name : ''
+        groupedByResource[resource_id].push(stream)
+
       })
     })
 

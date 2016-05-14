@@ -16,6 +16,10 @@ const styles = {
     height: dimensions.STREAM_CHANNEL_HEIGHT,
     width: '100%',
   },
+  blankStream: {
+    height: dimensions.STREAM_CHANNEL_HEIGHT,
+    width: '100%',
+  }
 }
 
 export default function ResourceActivityStreamsContainer(props) {
@@ -38,22 +42,30 @@ export default function ResourceActivityStreamsContainer(props) {
       const activity = activities.lookup[activity_id]
       const streamsGroupedByActivity = groupedStreams[activity_id] || []
 
-      list.push(<div key={`r${activity_id}`} style={styles.groupStream} />)
+      list.push(
+        <div key={`activity-${activity_id}`} style={styles.groupStream} />
+      )
 
       streamsGroupedByActivity.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid
 
-        list.push(
-          <ResourceActivityStream
-            key={stream.uid}
-            isActive={isActive}
-            resourceActivityDays={resourceActivityDays}
-            selectedStreamDaysLookup={activeStream.selectedStreamDaysLookup}
-            stream={stream}
-            updateStreamDaySelection={updateStreamDaySelection}
-          />
-        )
+        if (stream.hasWorkedOrScheduledDays) {
+          list.push(
+            <ResourceActivityStream
+              key={stream.uid}
+              isActive={isActive}
+              resourceActivityDays={resourceActivityDays}
+              selectedStreamDaysLookup={activeStream.selectedStreamDaysLookup}
+              stream={stream}
+              updateStreamDaySelection={updateStreamDaySelection}
+            />
+          )
+        }
       })
+
+      list.push(
+        <div key={`blank-${activity_id}`} style={styles.blankStream} />
+      )
 
       list.push(<StatefulDivider key={`d${activity_id}`} />)
     })
@@ -69,22 +81,30 @@ export default function ResourceActivityStreamsContainer(props) {
       const resource = resources.lookup[resource_id]
       const streamsGroupedByResource = groupedStreams[resource_id] || []
 
-      list.push(<div key={`r${resource_id}`} style={styles.groupStream} />)
+      list.push(
+        <div key={`resource-${resource_id}`} style={styles.groupStream} />
+      )
 
       streamsGroupedByResource.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid
 
-        list.push(
-          <ResourceActivityStream
-            key={stream.uid}
-            isActive={isActive}
-            resourceActivityDays={resourceActivityDays}
-            selectedStreamDaysLookup={activeStream.selectedStreamDaysLookup}
-            stream={stream}
-            updateStreamDaySelection={updateStreamDaySelection}
-          />
-        )
+        if (stream.hasWorkedOrScheduledDays) {
+          list.push(
+            <ResourceActivityStream
+              key={stream.uid}
+              isActive={isActive}
+              resourceActivityDays={resourceActivityDays}
+              selectedStreamDaysLookup={activeStream.selectedStreamDaysLookup}
+              stream={stream}
+              updateStreamDaySelection={updateStreamDaySelection}
+            />
+          )
+        }
       })
+
+      list.push(
+        <div key={`blank-${resource_id}`} style={styles.blankStream} />
+      )
 
       list.push(<StatefulDivider key={`d${resource_id}`} />)
     })
