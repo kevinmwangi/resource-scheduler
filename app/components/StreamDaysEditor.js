@@ -15,6 +15,7 @@ const styles = {
     margin: 0,
     padding: '24px 24px 20px',
     color: colors.darkBlack,
+    fontWeight: 400,
   },
 }
 
