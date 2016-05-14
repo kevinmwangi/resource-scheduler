@@ -42,7 +42,7 @@ export default function DayOfMonth({day}) {
                     styles.today :
                     (isWeekend ? styles.weekend : styles.weekday)
 
-  const style = Object.assign(styles.DayOfMonth, dayStyle)
+  const style = Object.assign({}, styles.DayOfMonth, dayStyle)
 
   return (
     <div className="DayOfMonth" style={style}>
