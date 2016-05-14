@@ -49,7 +49,7 @@ const getGroupedStreams = createSelector(
           }
         })
 
-        let stream = {
+        const baseStream = {
           streamDays,
           activity_id,
           resource_id,
@@ -57,14 +57,19 @@ const getGroupedStreams = createSelector(
           uid: `${resource_id}:${activity_id}`,
         }
 
+        const activityStream = Object.assign(
+          {label: activity.name}, baseStream
+        )
+
+        const resourceStream = Object.assign(
+          {label: resource.name}, baseStream
+        )
+
         groupedByActivity[activity_id] = groupedByActivity[activity_id] || []
-        stream.label = resource ? resource.name : ''
-        groupedByActivity[activity_id].push(stream)
+        groupedByActivity[activity_id].push(resourceStream)
 
         groupedByResource[resource_id] = groupedByResource[resource_id] || []
-        stream.label = activity ? activity.name : ''
-        groupedByResource[resource_id].push(stream)
-
+        groupedByResource[resource_id].push(activityStream)
       })
     })
 

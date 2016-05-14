@@ -72,14 +72,16 @@ export default function StreamLabelsContainer(props) {
       )
 
       activityStreams.forEach((stream) => {
-        if (stream.hasWorkedOrScheduledDays) {
+        const isActive = stream.uid == activeStream.uid
+
+        if (stream.hasWorkedOrScheduledDays || isActive) {
           const resource = resources.lookup[stream.resource_id]
           list.push(
             <StreamLabel
               key={stream.uid}
               uid={stream.uid}
               onTouchTap={changeActiveStream}
-              isActive={stream.uid == activeStream.uid}
+              isActive={isActive}
               label={resource.name}
               layoutStyles={styles.NestedListItem}
               avatar={resourceAvatar}
@@ -92,7 +94,7 @@ export default function StreamLabelsContainer(props) {
         <StreamAdder
           key={`streamAdderActivities-${activity_id}`}
           hintText="Add Resource"
-          onAdd={() => {}}
+          handleAddStream={changeActiveStream}
           layoutStyles={styles.StreamAdder}
           streamCollection={activityStreams}
         />
@@ -123,14 +125,16 @@ export default function StreamLabelsContainer(props) {
       )
 
       resourceStreams.forEach((stream) => {
-        if (stream.hasWorkedOrScheduledDays) {
+        const isActive = stream.uid == activeStream.uid
+
+        if (stream.hasWorkedOrScheduledDays || isActive) {
           const activity = activities.lookup[stream.activity_id]
           list.push(
             <StreamLabel
               key={stream.uid}
               uid={stream.uid}
               onTouchTap={changeActiveStream}
-              isActive={stream.uid == activeStream.uid}
+              isActive={isActive}
               label={activity.name}
               layoutStyles={styles.NestedListItem}
               avatar={activityAvatar}
@@ -143,7 +147,7 @@ export default function StreamLabelsContainer(props) {
         <StreamAdder
           key={`streamAdderResources-${resource_id}`}
           hintText="Add Activity"
-          onAdd={() => {}}
+          handleAddStream={changeActiveStream}
           layoutStyles={styles.StreamAdder}
           streamCollection={resourceStreams}
         />

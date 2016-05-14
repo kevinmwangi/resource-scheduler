@@ -29,6 +29,16 @@ describe('reducer: selectedStreamDaysLookup', function() {
     })
   })
 
+  describe(actionType.ADD_STREAM, function() {
+    it('clears the selection', function() {
+      const state = {'2016-04-04:3:4': true}
+      const action = {
+        type: actionType.ADD_STREAM,
+      }
+      expect(selectedStreamDaysLookup(state, action)).toEqual({})
+    })
+  })
+
   describe(actionType.UPDATE_STREAM_DAYS_SUCCEEDED, function() {
     it('clears the selection', function() {
       const state = {'2016-04-04:3:4': true}

@@ -49,7 +49,7 @@ export default function ResourceActivityStreamsContainer(props) {
       streamsGroupedByActivity.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid
 
-        if (stream.hasWorkedOrScheduledDays) {
+        if (stream.hasWorkedOrScheduledDays || isActive) {
           list.push(
             <ResourceActivityStream
               key={stream.uid}
@@ -88,7 +88,7 @@ export default function ResourceActivityStreamsContainer(props) {
       streamsGroupedByResource.forEach((stream) => {
         const isActive = stream.uid == activeStream.uid
 
-        if (stream.hasWorkedOrScheduledDays) {
+        if (stream.hasWorkedOrScheduledDays || isActive) {
           list.push(
             <ResourceActivityStream
               key={stream.uid}

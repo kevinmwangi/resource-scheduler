@@ -15,13 +15,13 @@ const styles = {
 export default class StreamAdder extends Component {
   static propTypes = {
     hintText: PropTypes.string.isRequired,
-    onAdd: PropTypes.func.isRequired,
+    handleAddStream: PropTypes.func.isRequired,
     streamCollection: PropTypes.array.isRequired,
   }
 
   render() {
     const {
-      onAdd,
+      handleAddStream,
       hintText,
       layoutStyles,
       streamCollection,
@@ -47,7 +47,7 @@ export default class StreamAdder extends Component {
           value={null}
           hintText={hintText}
           fullWidth={true}
-          onChange={onAdd}
+          onChange={(event, index, value) => handleAddStream(value)}
           style={styles.SelectField}
           >
             {menuItems}

@@ -7,6 +7,9 @@ export default function (state = initialState, action) {
     case actionType.CHANGE_ACTIVE_STREAM:
       return (action.data.uid == state) ? null : action.data.uid
 
+    case actionType.ADD_STREAM:
+      return action.data.uid
+
     default:
       return state
   }

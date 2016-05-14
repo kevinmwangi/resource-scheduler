@@ -77,7 +77,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 1,
             "hasWorkedOrScheduledDays": false,
-            "label": "Holiday",
+            "label": "neil",
             "resource_id": 1,
             "streamDays": [
               {
@@ -113,7 +113,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 1,
             "hasWorkedOrScheduledDays": false,
-            "label": "Holiday",
+            "label": "room1",
             "resource_id": 2,
             "streamDays": [
               {
@@ -149,7 +149,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 1,
             "hasWorkedOrScheduledDays": true,
-            "label": "Holiday",
+            "label": "jeff",
             "resource_id": 3,
             "streamDays": [
               {
@@ -187,7 +187,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 2,
             "hasWorkedOrScheduledDays": true,
-            "label": "Project 1",
+            "label": "neil",
             "resource_id": 1,
             "streamDays": [
               {
@@ -223,7 +223,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 2,
             "hasWorkedOrScheduledDays": false,
-            "label": "Project 1",
+            "label": "room1",
             "resource_id": 2,
             "streamDays": [
               {
@@ -259,7 +259,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 2,
             "hasWorkedOrScheduledDays": true,
-            "label": "Project 1",
+            "label": "jeff",
             "resource_id": 3,
             "streamDays": [
               {
@@ -297,7 +297,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 3,
             "hasWorkedOrScheduledDays": false,
-            "label": "Project 2",
+            "label": "neil",
             "resource_id": 1,
             "streamDays": [
               {
@@ -333,7 +333,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 3,
             "hasWorkedOrScheduledDays": false,
-            "label": "Project 2",
+            "label": "room1",
             "resource_id": 2,
             "streamDays": [
               {
@@ -369,7 +369,7 @@ describe('selector: getGroupedStreams', function() {
           {
             "activity_id": 3,
             "hasWorkedOrScheduledDays": false,
-            "label": "Project 2",
+            "label": "jeff",
             "resource_id": 3,
             "streamDays": [
               {
@@ -733,9 +733,9 @@ describe('selector: getGroupedStreams', function() {
               },
             ],
             "uid": "3:3",
-          }
-        ]
-      }
+          },
+        ],
+      },
     }
 
     expect(getGroupedStreams(state)).toEqual(expectedStreams)

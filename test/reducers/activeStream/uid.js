@@ -42,4 +42,28 @@ describe('reducer: uid', function() {
       expect(uid(state, action)).toEqual(null)
     })
   })
+
+  describe(actionType.ADD_STREAM, function() {
+    it('sets the uid', function() {
+      const state = '3:4'
+      const action = {
+        type: actionType.ADD_STREAM,
+        data: {
+          uid: '2:1',
+        }
+      }
+      expect(uid(state, action)).toEqual('2:1')
+    })
+
+    it('does NOT toggle the uid to null if unchanged', function() {
+      const state = '2:1'
+      const action = {
+        type: actionType.ADD_STREAM,
+        data: {
+          uid: '2:1',
+        }
+      }
+      expect(uid(state, action)).toEqual('2:1')
+    })
+  })
 })
