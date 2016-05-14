@@ -8,6 +8,8 @@ const processedForm = (settings) => {
 
   if (typeof processedForm.hours == 'undefined') {
     delete processedForm.hours
+  } else if (processedForm.hours == '' || processedForm.hours == null) {
+    delete processedForm.hours
   } else if (isNaN(Number(processedForm.hours))) {
     processedForm.hours = ''
   } else {
