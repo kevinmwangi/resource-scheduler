@@ -4,6 +4,8 @@ import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import Update from 'material-ui/svg-icons/action/update'
+import FontIcon from 'material-ui/FontIcon'
 
 import colors from '../constants/colors'
 
@@ -35,14 +37,19 @@ export default function ScheduleAppBar (props) {
       zDepth={2}
       title="Scheduler"
       iconElementLeft={
+        <IconButton>
+          <Update color={colors.alternateTextColor} />
+        </IconButton>
+      }
+      iconElementRight={
         <IconMenu
           iconButtonElement={
             <IconButton>
               <NavigationMenu color={colors.alternateTextColor} />
             </IconButton>
           }
-          anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
           style={styles.IconMenu}
           iconStyle={styles.iconStyle}
           onItemTouchTap={handleMenuSelection}
@@ -50,7 +57,6 @@ export default function ScheduleAppBar (props) {
           <MenuItem key={'resource'} primaryText='New Resource'/>
           <MenuItem key={'activity'} primaryText='New Activity' />
         </IconMenu>
-
       }
       style={Object.assign({}, styles.AppBar, layoutStyles)}
     />
