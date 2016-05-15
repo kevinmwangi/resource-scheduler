@@ -2,10 +2,10 @@ import actionType from '../../../app/constants/actionTypes'
 
 import lookup from '../../../app/reducers/resourceActivityDays/lookup'
 
-describe('reducer: resources.lookup', function() {
+describe('reducer: resourceActivityDays.lookup', function() {
   const day1 = {
     activity_id: 1,
-    day: "2016-03-20",
+    date: "2016-03-20",
     hours: 4,
     id: 1,
     resource_id: 2,
@@ -15,7 +15,7 @@ describe('reducer: resources.lookup', function() {
 
   const day2 = {
     activity_id: 2,
-    day: "2016-03-15",
+    date: "2016-03-15",
     hours: 3,
     id: 2,
     resource_id: 1,
@@ -49,7 +49,7 @@ describe('reducer: resources.lookup', function() {
 
       const day2Changed = {
         activity_id: 2,
-        day: "2016-03-15",
+        date: "2016-03-15",
         hours: 0,
         id: 2,
         resource_id: 1,
@@ -59,7 +59,7 @@ describe('reducer: resources.lookup', function() {
 
       const blankDay = {
         activity_id: 3,
-        day: "2016-05-07",
+        date: "2016-05-07",
         hours: 0,
         id: null,
         resource_id: 3,
@@ -92,7 +92,7 @@ describe('reducer: resources.lookup', function() {
     it('updates the relevant days', function() {
       const day1Updated = {
         activity_id: 1,
-        day: "2016-03-20",
+        date: "2016-03-20",
         hours: 5,
         id: 1,
         resource_id: 2,
@@ -102,7 +102,7 @@ describe('reducer: resources.lookup', function() {
 
       const newDay = {
         activity_id: 3,
-        day: "2016-05-07",
+        date: "2016-05-07",
         hours: undefined,
         id: 3,
         resource_id: 3,

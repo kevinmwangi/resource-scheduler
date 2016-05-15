@@ -1,10 +1,10 @@
 import moment from 'moment'
 
-export default (days) => {
+export default (dates) => {
   let groupedByMonthYear = {}
 
-  days.forEach((day) => {
-    const monthYear = moment(day).format('MMM-YYYY')
+  dates.forEach((date) => {
+    const monthYear = moment(date).format('MMM-YYYY')
     let value = groupedByMonthYear[monthYear] || 0
     groupedByMonthYear[monthYear] = value + 1
   })

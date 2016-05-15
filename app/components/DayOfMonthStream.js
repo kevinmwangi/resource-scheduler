@@ -9,9 +9,9 @@ const styles = {
   },
 }
 
-export default function DayOfMonthStream ({days}) {
-  const dateComponents = days.map((day) => {
-    return <DayOfMonth key={day} day={day} />
+export default function DayOfMonthStream ({dates}) {
+  const dateComponents = dates.map((date) => {
+    return <DayOfMonth key={date} date={date} />
   })
 
   return (
@@ -22,5 +22,5 @@ export default function DayOfMonthStream ({days}) {
 }
 
 DayOfMonthStream.propTypes = {
-  days: PropTypes.array.isRequired
+  dates: PropTypes.array.isRequired
 }

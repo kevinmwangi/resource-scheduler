@@ -92,7 +92,7 @@ export default function ScheduleTable (props) {
             style={styles.timeStream}
             >
 
-              <TimeStream days={props.days} />
+              <TimeStream dates={props.dates} />
 
           </Paper>
         </div>
@@ -128,7 +128,7 @@ export default function ScheduleTable (props) {
 ScheduleTable.propTypes = {
   activeStream: PropTypes.object.isRequired,
   activities: PropTypes.object.isRequired,
-  days: PropTypes.array.isRequired,
+  dates: PropTypes.array.isRequired,
   resourceActivityDays: PropTypes.object.isRequired,
   resources: PropTypes.object.isRequired,
   streamsGroupedByActivities: PropTypes.object.isRequired,

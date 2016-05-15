@@ -8,8 +8,8 @@ export default function (state = initialState, action) {
 
     case actionType.UPDATE_STREAM_DAY_SELECTION:
       let selections = {}
-      action.data.selectedStreamDays.forEach((day) => {
-        selections[day.uid] = day
+      action.data.selectedStreamDays.forEach((streamDay) => {
+        selections[streamDay.uid] = streamDay
       })
       return Object.assign({}, selections, state)
 

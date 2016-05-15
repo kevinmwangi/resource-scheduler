@@ -26,7 +26,7 @@ const today = moment().startOf('day')
 const halfPeriod = moment.duration(periodLength / 2, 'days')
 const periodStart = today.subtract(halfPeriod)
 
-function generateDays(periodStart, periodLength) {
+function generateDates(periodStart, periodLength) {
   let ids = []
 
   for(let i = 0; i < periodLength; i++) {
@@ -35,22 +35,22 @@ function generateDays(periodStart, periodLength) {
   return ids
 }
 
-const days = generateDays(periodStart, periodLength)
+const dates = generateDates(periodStart, periodLength)
 
-function generateSingleResourceActivityDay (resource_id, activity_id, idCounter, day, dayToBeWorked, dayToBeScheduled) {
-  const isPast = moment(day).isBefore(moment(), 'day')
-  const hours = (isPast && dayToBeWorked) ? Math.round(Math.random() * 6) : undefined
+function generateSingleResourceActivityDay (resource_id, activity_id, idCounter, date, dateToBeWorked, dateToBeScheduled) {
+  const isPast = moment(date).isBefore(moment(), 'day')
+  const hours = (isPast && dateToBeWorked) ? Math.round(Math.random() * 6) : undefined
 
-  const uid = `${day}:${resource_id}:${activity_id}`
+  const uid = `${date}:${resource_id}:${activity_id}`
 
   return {
     id: idCounter,
     resource_id,
     activity_id,
-    day,
+    date,
     hours,
     uid,
-    scheduled: dayToBeScheduled,
+    scheduled: dateToBeScheduled,
   }
 }
 
@@ -63,17 +63,17 @@ const resourceActivityDays = (function generateResourceActivityDays () {
       const streamToBeScheduled = Math.random() > 0.5
 
       if (streamToBeScheduled) {
-        days.forEach((day) => {
-          const dayOfWeek = moment(day).day()
+        dates.forEach((date) => {
+          const dayOfWeek = moment(date).day()
           const isWeekday = dayOfWeek > 0 && dayOfWeek < 6
-          const dayToBeScheduledOrWorked = Math.random() > 0.2 && isWeekday
+          const dateToBeScheduledOrWorked = Math.random() > 0.2 && isWeekday
 
-          if (dayToBeScheduledOrWorked) {
+          if (dateToBeScheduledOrWorked) {
             idCounter++
-            const dayToBeWorked = Math.random() > 0.1
-            const dayToBeScheduled = Math.random() > 0.1 && isWeekday
+            const dateToBeWorked = Math.random() > 0.1
+            const dateToBeScheduled = Math.random() > 0.1 && isWeekday
             const scheduledDay = generateSingleResourceActivityDay(
-              resource_id, activity_id, idCounter, day, dayToBeWorked, dayToBeScheduled
+              resource_id, activity_id, idCounter, date, dateToBeWorked, dateToBeScheduled
             )
 
             lookup[scheduledDay.uid] = scheduledDay
@@ -91,6 +91,6 @@ const resourceActivityDays = (function generateResourceActivityDays () {
 export default {
   resources,
   activities,
-  days,
+  dates,
   resourceActivityDays,
 }

@@ -25,5 +25,5 @@ export default function TimeStream(props) {
 }
 
 TimeStream.propTypes = {
-  days: PropTypes.array.isRequired
+  dates: PropTypes.array.isRequired
 }

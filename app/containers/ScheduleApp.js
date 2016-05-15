@@ -32,7 +32,7 @@ function mapStateToProps(state) {
   return Object.assign({
     activeStream: state.activeStream,
     activities: state.activities,
-    days: state.days,
+    dates: state.dates,
     editing: state.editing,
     resourceActivityDays: state.resourceActivityDays,
     resources: state.resources,

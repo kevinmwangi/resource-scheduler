@@ -1,8 +1,8 @@
 import actionType from '../../../app/constants/actionTypes'
 
-import ids from '../../../app/reducers/days'
+import ids from '../../../app/reducers/dates'
 
-describe('reducer: days', function() {
+describe('reducer: dates', function() {
   describe('initial state', function() {
     it('is an empty array', function() {
       const state = undefined
@@ -18,16 +18,4 @@ describe('reducer: days', function() {
       expect(ids(state, action)).toBe(state)
     })
   })
-
-  // describe(actionType.ACTION_NAME, function() {
-  //   it('removes the id', function() {
-  //     const state = ?
-  //     const action = {
-  //       type: actionType.ACTION_NAME
-  //       ?
-  //     }
-  //     expect(ids(state, action)).toEqual(?)
-  //   })
-  // })
-
 })

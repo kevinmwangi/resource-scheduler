@@ -31,8 +31,8 @@ const styles = {
   }
 }
 
-export default function DayOfMonth({day}) {
-  const momentDay = moment(day)
+export default function DayOfMonth({date}) {
+  const momentDay = moment(date)
   const dayOfMonth = momentDay.date()
   const dayOfWeek = momentDay.day()
   const isWeekend = (dayOfWeek == 0) || (dayOfWeek == 6)
@@ -55,5 +55,5 @@ export default function DayOfMonth({day}) {
 
 
 DayOfMonth.propTypes = {
-  day: PropTypes.string.isRequired
+  date: PropTypes.string.isRequired
 }

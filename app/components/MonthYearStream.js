@@ -10,8 +10,8 @@ const styles = {
   },
 }
 
-export default function MonthYearStream ({days}) {
-  const dayCounts = datesGroupedByMonthYear(days)
+export default function MonthYearStream ({dates}) {
+  const dayCounts = datesGroupedByMonthYear(dates)
 
   const monthElements = Object.keys(dayCounts).map((monthYear) => {
     const dayCount = dayCounts[monthYear]
@@ -26,5 +26,5 @@ export default function MonthYearStream ({days}) {
 }
 
 MonthYearStream.propTypes = {
-  days: PropTypes.array.isRequired
+  dates: PropTypes.array.isRequired
 }
