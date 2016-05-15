@@ -68,8 +68,6 @@ export default function DialogForm(props) {
         return <FormResource {...formProps} />
       case 'Activity':
         return <FormActivity {...formProps} />
-      case 'Stream':
-        return <FormStream {...formProps} />
       default:
         throw `DialogForm does not recognize given entityType: ${entityType}.`
     }
