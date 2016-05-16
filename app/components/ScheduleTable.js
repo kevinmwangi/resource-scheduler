@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
+import IconButton from 'material-ui/IconButton'
+import FontIcon from 'material-ui/FontIcon'
 
 import ResourceActivityStream from './ResourceActivityStream'
 import StreamLabelsContainer from './StreamLabelsContainer'
 import TimeStream from './TimeStream'
 import ResourceActivityStreamsContainer from './ResourceActivityStreamsContainer'
 import dimensions from '../constants/dimensions'
+import colors from '../constants/colors'
 import ViewSwitcher from '../components/ViewSwitcher'
 
 const styles = {
@@ -55,11 +58,15 @@ const styles = {
     width: dimensions.STREAM_LABEL_WIDTH,
     zIndex: 2,
   },
-  dateControls: {
+  dateControl: {
     flex: 'none',
     width: 56,
-    marginLeft: dimensions.desktopGutterLess,
+    marginLeft: dimensions.desktopGutter,
     height: '100%',
+  },
+  ViewSwitcher: {
+    flex: '1 1 auto',
+    height: '100%'
   },
 }
 
@@ -79,10 +86,28 @@ export default function ScheduleTable (props) {
             <ViewSwitcher
               viewGroupedBy={props.streamGrouping}
               onViewGroupChange={props.regroupStreams}
-              layoutStyles={{flex: '1 1 auto', height: '100%'}}
+              layoutStyles={styles.ViewSwitcher}
             />
 
-            <div style={styles.dateControls} />
+            <div style={styles.dateControl} >
+              <IconButton
+                onTouchTap={() => {
+                  const dateCount = props.dates.length
+                  const startDate = props.dates[0]
+                  const endDate = props.dates[dateCount - 1]
+
+                  props.editDateRange(startDate, endDate)
+                }}
+                tooltip="Change date range"
+                >
+                <FontIcon
+                  hoverColor={colors.accent1Color}
+                  className="material-icons"
+                  >
+                  date_range
+                </FontIcon>
+              </IconButton>
+            </div>
 
           </Paper>
 
@@ -134,4 +159,5 @@ ScheduleTable.propTypes = {
   streamsGroupedByActivities: PropTypes.object.isRequired,
   streamsGroupedByResources: PropTypes.object.isRequired,
   streamGrouping: PropTypes.string.isRequired,
+  editDateRange: PropTypes.func.isRequired,
 }

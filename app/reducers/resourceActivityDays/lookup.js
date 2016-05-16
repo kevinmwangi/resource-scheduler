@@ -16,6 +16,9 @@ export default function (state = initialState, action) {
     case actionType.UPDATE_STREAM_DAYS_SUCCEEDED:
       return Object.assign({}, state, action.data.updatedStreamDays)
 
+    case actionType.SET_DATE_RANGE_SUCCEEDED:
+      return Object.assign({}, action.data.resourceActivityDays.lookup)
+
     default:
       return state
   }

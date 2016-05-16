@@ -24,3 +24,7 @@ export {default as changeActiveStream} from './changeActiveStream'
 
 export {default as updateStreamDaySelection} from './updateStreamDaySelection'
 export {default as updateStreamDays} from './updateStreamDays'
+
+export {default as setDateRange} from './setDateRange'
+export {default as editDateRange} from './editDateRange'
+export {default as cancelEditDateRange} from './cancelEditDateRange'

@@ -134,4 +134,52 @@ describe('reducer: resourceActivityDays.lookup', function() {
       expect(lookup(state, action)).toEqual(expected)
     })
   })
+
+  describe(actionType.SET_DATE_RANGE_SUCCEEDED, function() {
+    it('returns the given resourceActivityDays', function() {
+      const state = {
+        [day1.uid]: day1,
+        [day2.uid]: day2,
+      }
+
+      const newDay1 = {
+        activity_id: 1,
+        date: "2014-09-21",
+        hours: 5,
+        id: 1,
+        resource_id: 2,
+        scheduled: true,
+        uid: "2016-04-20:2:1",
+      }
+
+      const newDay2 = {
+        activity_id: 3,
+        date: "2016-05-07",
+        hours: undefined,
+        id: 3,
+        resource_id: 3,
+        scheduled: true,
+        uid: "2016-05-07:3:3",
+      }
+
+      const action = {
+        type: actionType.SET_DATE_RANGE_SUCCEEDED,
+        data: {
+          resourceActivityDays: {
+            lookup: {
+              [newDay1.uid]: newDay1,
+              [newDay2.uid]: newDay2,
+            }
+          }
+        }
+      }
+
+      const expected = {
+        [newDay1.uid]: newDay1,
+        [newDay2.uid]: newDay2,
+      }
+
+      expect(lookup(state, action)).toEqual(expected)
+    })
+  })
 })

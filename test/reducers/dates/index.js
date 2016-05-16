@@ -18,4 +18,20 @@ describe('reducer: dates', function() {
       expect(ids(state, action)).toBe(state)
     })
   })
+
+  describe(actionType.SET_DATE_RANGE_SUCCEEDED, function() {
+    it('returns the given state', function() {
+      const state = []
+      const action = {
+        type: actionType.SET_DATE_RANGE_SUCCEEDED,
+        data: {
+          dates: ['2016-05-01', '2016-05-03', '2016-06-04'],
+          resourceActivityDays: {}
+        }
+      }
+      expect(ids(state, action)).toEqual([
+        '2016-05-01', '2016-05-03', '2016-06-04'
+      ])
+    })
+  })
 })

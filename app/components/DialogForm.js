@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton'
 
 import FormResource from './FormResource'
 import FormActivity from './FormActivity'
+import FormDateRange from './FormDateRange'
 
 const styles = {}
 
@@ -68,6 +69,8 @@ export default function DialogForm(props) {
         return <FormResource {...formProps} />
       case 'Activity':
         return <FormActivity {...formProps} />
+      case 'Date Range':
+        return <FormDateRange {...formProps} />
       default:
         throw `DialogForm does not recognize given entityType: ${entityType}.`
     }
