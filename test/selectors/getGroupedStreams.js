@@ -13,7 +13,7 @@ describe('selector: getGroupedStreams', function() {
           3: {id: 3, name: 'Project 2'},
         }
       },
-      days: [
+      dates: [
         '2016-04-24', '2016-04-25', '2016-04-26'
       ],
       resources: {
@@ -31,7 +31,7 @@ describe('selector: getGroupedStreams', function() {
         lookup: {
           '2016-04-26:3:1': {
             activity_id: 1,
-            day: "2016-04-26",
+            date: "2016-04-26",
             hours: 4,
             id: 2,
             resource_id: 3,
@@ -41,7 +41,7 @@ describe('selector: getGroupedStreams', function() {
 
           '2016-04-25:1:2': {
             activity_id: 2,
-            day: "2016-04-25",
+            date: "2016-04-25",
             hours: undefined,
             id: 1,
             resource_id: 1,
@@ -51,7 +51,7 @@ describe('selector: getGroupedStreams', function() {
 
           '2016-04-25:3:2': {
             activity_id: 2,
-            day: "2016-04-25",
+            date: "2016-04-25",
             hours: 0,
             id: 3,
             resource_id: 3,
@@ -60,7 +60,7 @@ describe('selector: getGroupedStreams', function() {
           },
           '2016-04-26:3:2': {
             activity_id: 2,
-            day: "2016-04-26",
+            date: "2016-04-26",
             hours: 2,
             id: 4,
             resource_id: 3,
@@ -82,7 +82,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 1,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -91,7 +91,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -100,7 +100,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -118,7 +118,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 1,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -127,7 +127,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -136,7 +136,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -154,7 +154,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 1,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -163,7 +163,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -172,7 +172,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": 4,
                 "id": 2,
                 "resource_id": 3,
@@ -192,7 +192,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 2,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -201,7 +201,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": 1,
                 "resource_id": 1,
@@ -210,7 +210,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -228,7 +228,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 2,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -237,7 +237,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -246,7 +246,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -264,7 +264,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 2,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -273,7 +273,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": 0,
                 "id": 3,
                 "resource_id": 3,
@@ -282,7 +282,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": 2,
                 "id": 4,
                 "resource_id": 3,
@@ -302,7 +302,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 3,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -311,7 +311,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -320,7 +320,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -338,7 +338,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 3,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -347,7 +347,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -356,7 +356,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -374,7 +374,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 3,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -383,7 +383,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -392,7 +392,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -414,7 +414,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 1,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -423,7 +423,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -432,7 +432,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -450,7 +450,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 2,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -459,7 +459,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": 1,
                 "resource_id": 1,
@@ -468,7 +468,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -486,7 +486,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 3,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -495,7 +495,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -504,7 +504,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 1,
@@ -524,7 +524,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 1,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -533,7 +533,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -542,7 +542,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -560,7 +560,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 2,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -569,7 +569,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -578,7 +578,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -596,7 +596,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 3,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -605,7 +605,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -614,7 +614,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 2,
@@ -634,7 +634,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 1,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -643,7 +643,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -652,7 +652,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 1,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": 4,
                 "id": 2,
                 "resource_id": 3,
@@ -670,7 +670,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 2,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -679,7 +679,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": 0,
                 "id": 3,
                 "resource_id": 3,
@@ -688,7 +688,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 2,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": 2,
                 "id": 4,
                 "resource_id": 3,
@@ -706,7 +706,7 @@ describe('selector: getGroupedStreams', function() {
             "streamDays": [
               {
                 "activity_id": 3,
-                "day": "2016-04-24",
+                "date": "2016-04-24",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -715,7 +715,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-25",
+                "date": "2016-04-25",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,
@@ -724,7 +724,7 @@ describe('selector: getGroupedStreams', function() {
               },
               {
                 "activity_id": 3,
-                "day": "2016-04-26",
+                "date": "2016-04-26",
                 "hours": undefined,
                 "id": null,
                 "resource_id": 3,

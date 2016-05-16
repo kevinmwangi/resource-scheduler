@@ -10,7 +10,9 @@ export default function (state = initialState, action) {
 
     case actionType.UPDATE_STREAM_DAY_SELECTION:
       let newState = {}
-      action.data.selectedStreamDays.forEach((day) => newState[day.uid] = true)
+      action.data.selectedStreamDays.forEach((streamDay) => {
+        newState[streamDay.uid] = true
+      })
       return newState
 
     case actionType.UPDATE_STREAM_DAYS_SUCCEEDED:

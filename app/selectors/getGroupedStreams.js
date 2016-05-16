@@ -1,21 +1,21 @@
 import underscore from 'underscore'
 import { createSelector } from 'reselect'
 
-const blankDay = (resource_id, activity_id, day) => {
+const blankDay = (resource_id, activity_id, date) => {
   return {
     id: null,
-    day: day,
+    date: date,
     resource_id,
     activity_id,
     hours: undefined,
     scheduled: false,
-    uid: `${day}:${resource_id}:${activity_id}`,
+    uid: `${date}:${resource_id}:${activity_id}`,
   }
 }
 
 const getResources = (state) => state.resources
 const getActivities = (state) => state.activities
-const getDays = (state) => state.days
+const getDates = (state) => state.dates
 const getResourceActivityDayLookup = (state) => {
   return state.resourceActivityDays.lookup
 }
@@ -24,10 +24,10 @@ const getGroupedStreams = createSelector(
   [
     getResources,
     getActivities,
-    getDays,
+    getDates,
     getResourceActivityDayLookup,
   ],
-  (resources, activities, days, resourceActivityDayLookup) => {
+  (resources, activities, dates, resourceActivityDayLookup) => {
     let groupedByActivity = {}
     let groupedByResource = {}
 
@@ -38,14 +38,14 @@ const getGroupedStreams = createSelector(
         const resource = resources.lookup[resource_id]
         const activity = activities.lookup[activity_id]
 
-        days.forEach((day) => {
-          const key = `${day}:${resource_id}:${activity_id}`
+        dates.forEach((date) => {
+          const key = `${date}:${resource_id}:${activity_id}`
           const resourceActivityDay = resourceActivityDayLookup[key]
           if (resourceActivityDay) {
             streamDays.push(resourceActivityDay)
             hasWorkedOrScheduledDays = hasWorkedOrScheduledDays || true
           } else {
-            streamDays.push(blankDay(resource_id, activity_id, day))
+            streamDays.push(blankDay(resource_id, activity_id, date))
           }
         })
 

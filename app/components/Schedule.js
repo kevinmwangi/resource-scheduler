@@ -21,6 +21,7 @@ export default function Schedule (props) {
     editActivity, cancelEditActivity, updateActivity,
     updateStreamDaySelection,
     updateStreamDays,
+    editDateRange, cancelEditDateRange, setDateRange,
 
     activeStream,
     activities,
@@ -55,6 +56,17 @@ export default function Schedule (props) {
         onUpdate={updateActivity}
         formId='formActivity'
         entityType='Activity'
+      />
+
+      <DialogForm
+        newEntity={undefined}
+        existingEntity={editing.dateRange}
+        onCancelNew={() => {}}
+        onCreate={() => {}}
+        onCancelEdit={cancelEditDateRange}
+        onUpdate={setDateRange}
+        formId='formDateRange'
+        entityType='Date Range'
       />
 
       <StreamDaysEditor
