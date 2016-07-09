@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import dimensions from '../constants/dimensions'
+
 import ScheduleTable from '../components/ScheduleTable'
 import DialogForm from '../components/DialogForm'
 import StreamDaysEditor from '../components/StreamDaysEditor'
@@ -9,7 +11,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     flex: '1 1 auto',
-    padding: 16,
+    height: `calc(100% - ${dimensions.desktopKeylineIncrement}px)`,
   },
 }
 
